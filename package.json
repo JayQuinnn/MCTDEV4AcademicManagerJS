@@ -1,0 +1,19 @@
+{
+  "name": "mctdev4academicmanagerjs",
+  "version": "1.0.0",
+  "description": "Academic manager for dev4",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JayQuinnn/MCTDEV4AcademicManagerJS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JayQuinnn/MCTDEV4AcademicManagerJS/issues"
+  },
+  "homepage": "https://github.com/JayQuinnn/MCTDEV4AcademicManagerJS#readme"
+}
