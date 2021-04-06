@@ -8,6 +8,7 @@
     <script defer src="addExchangeStudent.js"></script>
   </head>
   <body>
+    <a href="../index.html"><p>Back</p></a>
   <form>
     <div class="form-group">
       <label for="Name">Name</label>
@@ -71,9 +72,52 @@
         <option>C</option>
       </select>
     </div>
+    <h2>Dorm Information</h2>
     <div class="form-group">
-      <label for="Address">Address</label>
-      <input type="text" class="form-control" id="Address" placeholder="Address">
+      <label for="Building">Building</label>
+      <select class="form-control" id="Building">
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="Floor">Floor</label>
+      <input type="number" class="form-control" id="Floor" placeholder="Floor">
+    </div>
+    <div class="form-group">
+      <label for="Room">Room</label>
+      <input type="number" class="form-control" id="Room" placeholder="Room">
+    </div>
+    <h2>Alma information</h2>
+    <div class="form-group">
+      <label for="AlmaName">Alma Name</label>
+      <input type="text" class="form-control" id="AlmaName" placeholder="Alma Name">
+    </div>
+    <div class="form-group">
+      <label for="AlmaAddress">Alma Address</label>
+      <input type="text" class="form-control" id="AlmaAddress" placeholder="Alma Address">
+    </div>
+    <div class="form-group">
+      <label for="AlmaNotes">Alma Notes</label>
+      <input type="text" class="form-control" id="AlmaNotes" placeholder="Alma Notes">
+    </div>
+    <div class="form-group">
+      <label for="AlmaEmail">Alma Email</label>
+      <input type="email" class="form-control" id="AlmaEmail" placeholder="name@example.com">
+    </div>
+    <div class="form-group">
+      <label for="AlmaPhoneNumber">Alma Phone Number</label>
+      <input type="tel" class="form-control" id="AlmaPhoneNumber" placeholder="Alma Phone Number">
+    </div>
+    <h2>Motivational Letter</h2>
+    <div class="form-group">
+      <label for="LetterSubject">Subject</label>
+      <input type="text" class="form-control" id="Subject" placeholder="Subject">
+    </div>
+    <div class="form-group">
+      <label for="LetterBody">Body</label>
+      <input type="text" class="form-control" id="LetterBody" placeholder="Body">
     </div>
     <button id="FormButton" class="btn btn-primary">Submit</button>
   </form>
