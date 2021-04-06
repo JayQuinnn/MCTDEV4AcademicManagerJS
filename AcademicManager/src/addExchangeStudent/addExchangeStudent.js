@@ -3,6 +3,8 @@ document.getElementById('FormButton').addEventListener("click",(Event)=>{
     createStudent()
 });
 function createStudent(){
+
+    // Regular student
     
     const Name = document.getElementById("Name").value;
     const LastName = document.getElementById("LastName").value;
@@ -16,6 +18,37 @@ function createStudent(){
     const Year = document.getElementById("Year").value;
     // const Grades = document.getElementById("Grades").value;
     const Group = document.getElementById("Group").value;
+
+    // + Exchange
+
+    const Nationality = document.getElementById("Nationality").value;
+
+    const AlmaName = document.getElementById("ALma").value;
+    const AlmaAddress = document.getElementById("ALma").value;
+    const AlmaPhoneNumber = document.getElementById("ALma").value;
+    const AlmaEmail = document.getElementById("ALma").value;
+    const AlmaNotes = document.getElementById("ALma").value;
+    const Alma = {
+        AlmaName, AlmaAddress, AlmaPhoneNumber, AlmaEmail, AlmaNotes
+    }
+
+    const Duration = document.getElementById("Duration").value;
+    
+    const Building = document.getElementById("Building").value;
+    const Floor = document.getElementById("Floor").value;
+    const Room = document.getElementById("Room").value;
+    const Dorm = {
+        Building,
+        Floor,
+        Room
+    }
+
+    const LetterBody = document.getElementById("LetterBody").value;
+    const LetterSubject = document.getElementById("LetterSubject").value;
+    const Letter = {
+        Letterbody,
+        LetterSubject
+    }
 
     const Student = {
         Name,
@@ -32,6 +65,10 @@ function createStudent(){
         Group
     }
 
-    console.log(Student);
+    const ExchangeStudent = {
+        Nationality, Alma, Duration, Dorm, Letter
+    }
+
+    console.log(Student, ExchangeStudent);
 
 }
