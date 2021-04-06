@@ -21,13 +21,14 @@ function createStudent(){
 
     // + Exchange
 
-    const Nationality = document.getElementById("Nationality").value;
+    let Nationality = document.getElementById("Nationality").value;
+    Nationality = Nationality.toUpperCase()
 
-    const AlmaName = document.getElementById("ALma").value;
-    const AlmaAddress = document.getElementById("ALma").value;
-    const AlmaPhoneNumber = document.getElementById("ALma").value;
-    const AlmaEmail = document.getElementById("ALma").value;
-    const AlmaNotes = document.getElementById("ALma").value;
+    const AlmaName = document.getElementById("AlmaName").value;
+    const AlmaAddress = document.getElementById("AlmaAddress").value;
+    const AlmaPhoneNumber = document.getElementById("AlmaPhoneNumber").value;
+    const AlmaEmail = document.getElementById("AlmaEmail").value;
+    const AlmaNotes = document.getElementById("AlmaNotes").value;
     const Alma = {
         AlmaName, AlmaAddress, AlmaPhoneNumber, AlmaEmail, AlmaNotes
     }
@@ -46,7 +47,7 @@ function createStudent(){
     const LetterBody = document.getElementById("LetterBody").value;
     const LetterSubject = document.getElementById("LetterSubject").value;
     const Letter = {
-        Letterbody,
+        LetterBody,
         LetterSubject
     }
 
