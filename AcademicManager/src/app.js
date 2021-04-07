@@ -42,29 +42,33 @@ function getAllStudents(){
     connection.end();
 }
 
-function removeStudent(){
-    connection.connect();
-    connection.query('DELETE FROM tblStudent WHERE fldstudentid = 1', function (error, results, fields) {
-        if (error) throw error;
-        console.log('deleted ' + results.affectedRows + ' rows');
-      })
-    connection.end();
+function removeStudent(firstName,lastName){
+  searchStudents()
+  connection.connect();
+  connection.query('DELETE FROM tblStudent WHERE fldstudentid = 1', function (error, results, fields) {
+      if (error) throw error;
+      console.log('deleted ' + results.affectedRows + ' rows');
+    })
+  connection.end();
 }
 
-function searchStudents(studentName){
+function searchStudents(filter, value){
     connection.connect();
-    connection.query(`SELECT * FROM tblStudent WHERE fldName = '${studentName}'`, function (error, results, fields){
+    let firstResult = "";
+    connection.query(`SELECT * FROM tblStudent WHERE ${filter} = '${value}'`, function (error, results, fields){
         if (error) throw error;
         console.log(results);
+        firstResult = results[0];
     })
     connection.end();
+    return firstResult;
 }
 
 
 //addStudent(DefaultStudent);
 //getAllStudents();
 //removeStudent();
-searchStudents("Het");
+searchStudents("fldCourse","MCT");
 
 
 
