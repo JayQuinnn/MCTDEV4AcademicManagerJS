@@ -2,6 +2,22 @@ document.getElementById('FormButton').addEventListener("click",(Event)=>{
     Event.preventDefault()
     createStudent()
 });
+
+const DefaultStudent = {
+        Name: "Het",
+        LastName: "Test Object",
+        Course: "Dit is een Course!",
+        Sex: "MALE",
+        Picture: "c://path/pictures/something/memes.jpg",
+        Email: "hetTestObject@telenet.be",
+        Disabilities:"Deze knappe man is volledig kapabel",
+        PhoneNumber:"0461010101",
+        Year: "1",
+        // Grades,
+        Group: "A"
+    }
+
+
 function createStudent(){
 
     // Regular student
