@@ -35,5 +35,6 @@ function createStudent(){
     }
 
     console.log(Student);
+    addStudent(Student);
 
 }
