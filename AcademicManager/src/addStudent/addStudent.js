@@ -16,6 +16,7 @@ function createStudent(){
     const Year = document.getElementById("Year").value;
     // const Grades = document.getElementById("Grades").value;
     const Group = document.getElementById("Group").value;
+    const Address = document.getElementById("Address").value;
 
     const Student = {
         Name,
@@ -29,7 +30,8 @@ function createStudent(){
         PhoneNumber,
         Year,
         // Grades,
-        Group
+        Group,
+        Address
     }
 
     console.log(Student);
