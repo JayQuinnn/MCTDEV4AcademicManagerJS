@@ -6,7 +6,7 @@ document.getElementById('FormButton').addEventListener("click",(Event)=>{
 const DefaultStudent = {
         Name: "Het",
         LastName: "Test Object",
-        Course: "Dit is een Course!",
+        Course: "MCT",
         Sex: "MALE",
         Picture: "c://path/pictures/something/memes.jpg",
         Email: "hetTestObject@telenet.be",
