@@ -54,7 +54,7 @@ function removeStudent(){
 
 //addStudent(DefaultStudent);
 //getAllStudents();
-removeStudent();
+//removeStudent();
 
 
 
