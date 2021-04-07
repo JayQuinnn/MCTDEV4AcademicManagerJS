@@ -44,17 +44,28 @@ function getAllStudents(){
 
 function removeStudent(){
     connection.connect();
-    connection.query('DELETE FROM tblstudent WHERE fldstudentid = 1', function (error, results, fields) {
+    connection.query('DELETE FROM tblStudent WHERE fldstudentid = 1', function (error, results, fields) {
         if (error) throw error;
         console.log('deleted ' + results.affectedRows + ' rows');
       })
     connection.end();
 }
 
+function searchStudents(studentName){
+    connection.connect();
+    connection.query(`SELECT * FROM tblStudent WHERE fldName = '${studentName}'`, function (error, results, fields){
+        if (error) throw error;
+        console.log(results);
+    })
+    connection.end();
+}
+
 
 //addStudent(DefaultStudent);
 //getAllStudents();
-removeStudent();
+//removeStudent();
+searchStudents("Het");
+
 
 
 
