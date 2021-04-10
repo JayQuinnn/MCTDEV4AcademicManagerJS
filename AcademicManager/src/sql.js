@@ -4,7 +4,7 @@ let connection = mysql.createConnection({
     port: '25568',
     user: 'Mitch',
     password: 'mitch123456789',
-    database: 'academic01'
+    database: 'academic02'
 });
 
 const DefaultStudent = {
@@ -64,11 +64,19 @@ function searchStudents(filter, value){
     return firstResult;
 }
 
+function updateStudent(studentid, student){
+    console.log("searching for _____");
+    connection.connect();
+    connection.query(`UPDATE tblStudent SET fldName='Quinnzay', WHERE fldstudentid=1`)
+    connection.end();
+}
 
 //addStudent(DefaultStudent);
 //getAllStudents();
 //removeStudent();
-searchStudents("fldCourse","MCT");
+//searchStudents("fldCourse","MCT");
+
+updateStudent();
 
 
 
