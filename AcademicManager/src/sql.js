@@ -147,7 +147,24 @@ function getAllExchange(){
 }
 
 function renderAllAlmas(){
-
+    let allAlma = document.getElementById('allAlma');
+    let htmlString = ``;
+    connection.connect();
+    connection.query(`SELECT * FROM tblalma`,function(error, results, field){
+        console.log(results);
+        results.forEach(element => {
+            htmlString = htmlString + `
+            <div class="row">
+                <div class="col">${element.fldName}</div>
+                <div class="col">${element.fldAddress}</div>
+                <div class="col">${element.fldNotes}</div>
+                <div class="col">${element.fldEmail}</div>
+                <div class="col">${element.fldPhoneNumber}</div>
+            </div>`;
+            allAlma.innerHTML = htmlString;
+        });
+    })
+    connection.end();
 }
 
 
@@ -186,7 +203,6 @@ function updateExchange(studentid, student){
     connection.connect();
 
     console.log(`Updating ${student.Name} ${student.LastName}`);
-
     connection.query(`UPDATE tblstudentexchange SET fldName='${student.Name}' , fldLastName='${student.LastName}', fldGender='${student.Sex}', fldPicture='${student.Picture}', fldEmail='${student.Email}', fldDisabilities='${student.Disabilities}, fldPhoneNumber='${student.PhoneNumber}', fldYear='${student.Year}', fldGroup='${student.Group}', fldNationality='${student.Nationality}', fldAlmaID='${student.Alma}', fldDormID='${student.Dorm}', fldMotivationalLetter='${student.Letter}'`);
     connection.end();
 }
