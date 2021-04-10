@@ -95,6 +95,8 @@ function addStudent(student){
     connection.query(`INSERT INTO tblStudent(fldName,fldLastName,fldCourse,fldGender,fldPicture,fldEmail, fldDisabilities, fldPhoneNumber, fldYear, fldGroup, fldAddress) VALUES('${student.Name}','${student.LastName}','${student.Course}','${student.Sex}','${student.Picture}','${student.Email}','${student.Disabilities}','${student.PhoneNumber}',${student.Year},'${student.Group}','${student.Address}')`);
     connection.end();
 }
+
+
 /** FETCH ALL STUDENTS*/
 function getAllStudents(){
     connection.connect();
@@ -105,7 +107,24 @@ function getAllStudents(){
 }
 
 function renderAllAlmas(){
-
+    let allAlma = document.getElementById('allAlma');
+    let htmlString = ``;
+    connection.connect();
+    connection.query(`SELECT * FROM tblalma`,function(error, results, field){
+        console.log(results);
+        results.forEach(element => {
+            htmlString = htmlString + `
+            <div class="row">
+                <div class="col">${element.fldName}</div>
+                <div class="col">${element.fldAddress}</div>
+                <div class="col">${element.fldNotes}</div>
+                <div class="col">${element.fldEmail}</div>
+                <div class="col">${element.fldPhoneNumber}</div>
+            </div>`;
+            allAlma.innerHTML = htmlString;
+        });
+    })
+    connection.end();
 }
 
 
