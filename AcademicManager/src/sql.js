@@ -127,7 +127,13 @@ function addExchangeStudent(exchangeStudent){
 
 function addAlma(alma){
     //connection.connect();
-    connection.query(`INSERT INTO tblalma(fldName, fldAddress, fldNotes, fldEmail, fldPhoneNumber) VALUES('${alma.Name}','${alma.Address}','${alma.Notes}','${alma.Email}','${alma.PhoneNumber}')`)
+    connection.query(`INSERT INTO tblalma(fldName, fldAddress, fldNotes, fldEmail, fldPhoneNumber, fldKey) VALUES('${alma.Name}','${alma.Address}','${alma.Notes}','${alma.Email}','${alma.PhoneNumber}', '${alma.Name + alma.PhoneNumber}')`,
+    function (error, results, fields){
+        if (error) {
+            console.log("ALMA ALREADY EXISTS");
+            throw error
+        }
+    })
     //connection.end()
 }
 
