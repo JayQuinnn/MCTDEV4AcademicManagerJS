@@ -1,3 +1,4 @@
+/**INIT */
 const mysql = require('mysql');
 let connection = mysql.createConnection({
     host: '94.224.211.168',
@@ -7,6 +8,7 @@ let connection = mysql.createConnection({
     database: 'academic02'
 });
 
+/**STUDENT TEMPLATES*/
 class student {
     constructor(Name, LastName, CourseID, Sex, Picture, Email, Disabilities, PhoneNumber, Year, Group, Address){
         this.Name = Name;
@@ -38,6 +40,8 @@ const DefaultStudent = {
     Address: "Ergens"
 }
 
+
+/**SEARCH */
 function searchOn(tbl,fld,value){
     connection.connect();
     let firstResult = "";
@@ -48,32 +52,6 @@ function searchOn(tbl,fld,value){
     })
     connection.end();
     return firstResult;
-}
-
-function addStudent(student){
-    connection.connect();
-    connection.query(`INSERT INTO tblStudent(fldName,fldLastName,fldCourseID,fldGender,fldPicture,fldEmail, fldDisabilities, fldPhoneNumber, fldYear, fldGroup, fldAddress) VALUES('${student.Name}','${student.LastName}','${student.CourseID}','${student.Sex}','${student.Picture}','${student.Email}','${student.Disabilities}','${student.PhoneNumber}',${student.Year},'${student.Group}','${student.Address}')`);
-    connection.end();
-}
-
-function getAllStudents(){
-    connection.connect();
-    connection.query(`SELECT * FROM tblStudent`,function(error, results, field){
-        console.log(results)
-    })
-    connection.end();
-}
-
-function removeStudent(studentID){
-  connection.connect();
-
-  console.log(`Removing student with ID: ${studentID}`);
-
-  connection.query(`DELETE FROM tblStudent WHERE fldstudentid = ${studentID}`, function (error, results, fields) {
-      if (error) throw error;
-      console.log('deleted ' + results.affectedRows + ' rows');
-    })
-  connection.end();
 }
 
 function searchStudents(fld, value){
@@ -88,6 +66,36 @@ function searchStudents(fld, value){
     return firstResult;
 }
 
+/** ADD NEW STUDENT*/
+function addStudent(student){
+    connection.connect();
+    connection.query(`INSERT INTO tblStudent(fldName,fldLastName,fldCourseID,fldGender,fldPicture,fldEmail, fldDisabilities, fldPhoneNumber, fldYear, fldGroup, fldAddress) VALUES('${student.Name}','${student.LastName}','${student.CourseID}','${student.Sex}','${student.Picture}','${student.Email}','${student.Disabilities}','${student.PhoneNumber}',${student.Year},'${student.Group}','${student.Address}')`);
+    connection.end();
+}
+/** FETCH ALL STUDENTS*/
+function getAllStudents(){
+    connection.connect();
+    connection.query(`SELECT * FROM tblStudent`,function(error, results, field){
+        console.log(results)
+    })
+    connection.end();
+}
+
+/** REMOVE STUDENT*/
+function removeStudent(studentID){
+  connection.connect();
+
+  console.log(`Removing student with ID: ${studentID}`);
+
+  connection.query(`DELETE FROM tblStudent WHERE fldstudentid = ${studentID}`, function (error, results, fields) {
+      if (error) throw error;
+      console.log('deleted ' + results.affectedRows + ' rows');
+    })
+  connection.end();
+}
+
+
+/**UPDATE STUDENT */
 function updateStudent(studentid, student){
     connection.connect();
 
