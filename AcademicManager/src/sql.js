@@ -217,7 +217,7 @@ console.log("-------------------------------------------")
 //searchStudents("fldCourse","1");
 //searchOn("tblcourse","fldCourseName","MCT")
 //console.log(output)
-//addExchangeStudent(tom);
+addExchangeStudent(tom);
 //getAllExchange();
 //removeExchange(2);
 
