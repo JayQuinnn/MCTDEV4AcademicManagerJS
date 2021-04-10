@@ -17,7 +17,7 @@ const setOutput = (rows) => {
 }
 
 
-/**STUDENT TEMPLATES*/
+/**TEMPLATES*/
 class student {
     constructor(Name, LastName, Course, Sex, Picture, Email, Disabilities, PhoneNumber, Year, Group, Address){
         this.Name = Name;
@@ -31,6 +31,24 @@ class student {
         this.Year = Year;
         this.Group = Group;
         this.Address = Address;
+    }
+}
+
+class exchangeStudent {
+    constructor(Name, LastName, Sex, Picture, Email, Disabilities, PhoneNumber, Year, Group, Nationality, Alma, Dorm, Letter){
+        this.Name = Name;
+        this.LastName = LastName;
+        this.Sex = Sex;
+        this.Picture = Picture;
+        this.Email = Email;
+        this.Disabilities = Disabilities;
+        this.PhoneNumber = PhoneNumber;
+        this.Year = Year;
+        this.Group = Group;
+        this.Nationality = Nationality;
+        this.Alma = Alma;
+        this.Dorm = Dorm;
+        this.Letter = Letter;
     }
 }
 
@@ -84,10 +102,17 @@ function searchStudents(fld, value){
     return firstResult;
 }
 
-/** ADD NEW STUDENT*/
+/** ADD*/
 function addStudent(student){
     connection.connect();
+    console.log(`Adding ${student.Name} ${student.LastName}`)
     connection.query(`INSERT INTO tblStudent(fldName,fldLastName,fldCourse,fldGender,fldPicture,fldEmail, fldDisabilities, fldPhoneNumber, fldYear, fldGroup, fldAddress) VALUES('${student.Name}','${student.LastName}','${student.Course}','${student.Sex}','${student.Picture}','${student.Email}','${student.Disabilities}','${student.PhoneNumber}',${student.Year},'${student.Group}','${student.Address}')`);
+    connection.end();
+}
+
+function addExchangeStudent(exchangeStudent){
+    connection.connect();
+    connection.query(`INSERT INTO tblstudentexchange(fldName, fldLastName, fldGender, fldPicture, fldEmail, fldDisabilities, fldPhoneNumber, fldYear, fldGroup, fldNationality, fldAlmaID, fldDormID, fldMotivationalLetter)`)
     connection.end();
 }
 
