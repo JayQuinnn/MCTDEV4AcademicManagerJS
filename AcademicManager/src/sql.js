@@ -50,6 +50,7 @@ class exchangeStudent {
 let jochem = new student('Jochemmmm', 'Crab', 1, 'MALE', 'picture', 'jochem@jochem', 'Geen', '011111111111', '2', 'C', 'Leuven')
 let mitch = new student('Mitch', 'Van Hove', 1, 'MALE', 'picture2', 'jochem@jochem', 'Geen', '011456461111', '3', 'B', 'Dilbeek')
 
+let tom = new exchangeStudent('Tom','Wouters', 'MALE', 'PictureTom', 'Tom@tom', 'Geen', '654654', '3', 'C', "Tokyo", "1", "1", "Letter_Tom" )
   
 const setOutput = (rows) => {
     output = rows;
@@ -118,14 +119,22 @@ function addStudent(student){
 
 function addExchangeStudent(exchangeStudent){
     connection.connect();
-    connection.query(`INSERT INTO tblstudentexchange(fldName, fldLastName, fldGender, fldPicture, fldEmail, fldDisabilities, fldPhoneNumber, fldYear, fldGroup, fldNationality, fldAlmaID, fldDormID, fldMotivationalLetter)`)
+    connection.query(`INSERT INTO tblstudentexchange(fldName, fldLastName, fldGender, fldPicture, fldEmail, fldDisabilities, fldPhoneNumber, fldYear, fldGroup, fldNationality, fldAlmaID, fldDormID, fldMotivationalLetter) VALUES ('${exchangeStudent.Name}','${exchangeStudent.LastName}','${exchangeStudent.Sex}','${exchangeStudent.Picture}','${exchangeStudent.Email}','${exchangeStudent.Disabilities}','${exchangeStudent.PhoneNumber}','${exchangeStudent.Year}','${exchangeStudent.Group}','${exchangeStudent.Nationality}','${exchangeStudent.Alma}','${exchangeStudent.Dorm}','${exchangeStudent.Letter}')`)
     connection.end();
 }
 
-/** FETCH ALL STUDENTS*/
+/** FETCH ALL*/
 function getAllStudents(){
     connection.connect();
     connection.query(`SELECT * FROM tblStudent`,function(error, results, field){
+        console.log(results)
+    })
+    connection.end();
+}
+
+function getAllExchange(){
+    connection.connect();
+    connection.query(`SELECT * FROM tblstudentExchange`, function(error, results, field){
         console.log(results)
     })
     connection.end();
@@ -136,7 +145,7 @@ function renderAllAlmas(){
 }
 
 
-/** REMOVE STUDENT*/
+/** REMOVE*/
 function removeStudent(studentID){
   connection.connect();
   console.log(`Removing student with ID: ${studentID}`);
@@ -145,6 +154,16 @@ function removeStudent(studentID){
       console.log('deleted ' + results.affectedRows + ' rows');
     })
   connection.end();
+}
+
+function removeExchange(studentID){
+    connection.connect();
+    console.log(`Removing student with ID: ${studentID}`);
+    connection.query(`DELETE FROM tblstudentexchange WHERE fldStudentExchangeID = ${studentID}`, function(error, results, fields){
+        if(error) throw error;
+        console.log('deleted ' + results.affectedRows + ' rows');
+    })
+    connection.end();
 }
 
 /**UPDATE STUDENT */
@@ -157,6 +176,14 @@ function updateStudent(studentid, student){
     connection.end();
 }
 
+function updateExchange(studentid, student){
+    connection.connect();
+
+    console.log(`Updating ${student.Name} ${student.LastName}`);
+
+    connection.query(`UPDATE tblstudentexchange SET fldName='${student.Name}' , fldLastName='${student.LastName}', fldGender='${student.Sex}', fldPicture='${'1213154'}' `)
+}
+
 
 
 console.log("-------------------------------------------")
@@ -167,6 +194,9 @@ console.log("-------------------------------------------")
 //searchStudents("fldCourse","1");
 //searchOn("tblcourse","fldCourseName","MCT")
 //console.log(output)
+//addExchangeStudent(tom);
+//getAllExchange();
+//removeExchange(2);
 
 
 
