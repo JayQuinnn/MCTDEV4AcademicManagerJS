@@ -124,9 +124,9 @@ function addExchangeStudent(exchangeStudent){
 }
 
 function addAlma(alma){
-    connection.connect();
+    //connection.connect();
     connection.query(`INSERT INTO tblalma(fldName, fldAddress, fldNotes, fldEmail, fldPhoneNumber) VALUES('${alma.Name}','${alma.Address}','${alma.Notes}','${alma.Email}','${alma.PhoneNumber}')`)
-    connection.end()
+    //connection.end()
 }
 
 /** FETCH ALL*/
