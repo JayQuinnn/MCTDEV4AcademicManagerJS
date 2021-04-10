@@ -17,8 +17,24 @@ const setOutput = (rows) => {
 }
 
 
+class student {
+    constructor(Name, LastName, CourseID, Sex, Picture, Email, Disabilities, PhoneNumber, Year, Group, Address){
+        this.Name = Name;
+        this.LastName = LastName;
+        this.CourseID = CourseID;
+        this.Sex = Sex;
+        this.Picture = Picture;
+        this.Email = Email;
+        this.Disabilities = Disabilities;
+        this.PhoneNumber = PhoneNumber;
+        this.Year = Year;
+        this.Group = Group;
+        this.Address = Address;
+    }
+}
+
 const DefaultStudent = {
-    Name: "Het",
+    Name: "Mitch",
     LastName: "Test Object",
     CourseID: 1,
     Sex: "MALE",
@@ -67,10 +83,12 @@ function getAllStudents(){
     connection.end();
 }
 
-function removeStudent(firstName,lastName){
-  searchStudents()
+function removeStudent(studentID){
   connection.connect();
-  connection.query('DELETE FROM tblStudent WHERE fldstudentid = 1', function (error, results, fields) {
+
+  console.log(`Removing student with ID: ${studentID}`);
+
+  connection.query(`DELETE FROM tblStudent WHERE fldstudentid = ${studentID}`, function (error, results, fields) {
       if (error) throw error;
       console.log('deleted ' + results.affectedRows + ' rows');
     })
@@ -97,11 +115,34 @@ function setValue(val){
 //getAllStudents();
 //removeStudent();
 //searchStudents("fldCourse","MCT");
+
+
+function updateStudent(studentid, student){
+    connection.connect();
+
+    console.log(`Updating ${student.Name} ${student.LastName}`);
+
+    connection.query(`UPDATE tblStudent SET fldName='${student.Name}' , fldLastName='${student.LastName}', fldCourseID='${student.CourseID}', fldGender='${student.Sex}', fldPicture='${student.Picture}', fldEmail='${student.Email}', fldDisabilities='${student.Disabilities}', fldPhoneNumber='${student.PhoneNumber}'   WHERE fldstudentid=${studentid}`)
+    connection.end();
+}
+
+let jochem = new student('Jochemmmm', 'Crab', 1, 'MALE', 'picture', 'jochem@jochem', 'Geen', '011111111111', '2', 'C', 'Leuven')
+let mitch = new student('Mitch', 'Van Hove', 1, 'MALE', 'picture2', 'jochem@jochem', 'Geen', '011456461111', '3', 'B', 'Dilbeek')
+
+
+//getAllStudents();
+//removeStudent(2);
+//updateStudent(1, jochem);
+//addStudent(mitch);
+//searchStudents("fldCourseID","1");
 console.log("-------------------------------------------")
 searchOn("tblcourse","fldCourseName","MCT")
-
 console.log(output)
 console.log("-------------------------------------------")
+
+
+
+
 
 
 
