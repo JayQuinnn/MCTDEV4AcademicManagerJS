@@ -50,7 +50,7 @@ class exchangeStudent {
 let jochem = new student('Jochemmmm', 'Crab', 1, 'MALE', 'picture', 'jochem@jochem', 'Geen', '011111111111', '2', 'C', 'Leuven')
 let mitch = new student('Mitch', 'Van Hove', 1, 'MALE', 'picture2', 'jochem@jochem', 'Geen', '011456461111', '3', 'B', 'Dilbeek')
 
-let tom = new exchangeStudent('Tom','Wouters', 'MALE', 'PictureTom', 'Tom@tom', 'Geen', '654654', '3', 'C', "Tokyo", "1", "1", "Letter_Tom" )
+let tom = new exchangeStudent('T0mmmm','Wouters', 'MALE', 'PictureTom', 'Tom@tom', 'Geen', '654654', '3', 'C', "Tokyo", "1", "1", "Letter_Tom" )
   
 const setOutput = (rows) => {
     output = rows;
@@ -113,19 +113,22 @@ function searchStudents(fld, value){
 function addStudent(student){
     connection.connect();
     console.log(`Adding ${student.Name} ${student.LastName}`)
-    connection.query(`INSERT INTO tblStudent(fldName,fldLastName,fldCourse,fldGender,fldPicture,fldEmail, fldDisabilities, fldPhoneNumber, fldYear, fldGroup, fldAddress) VALUES('${student.Name}','${student.LastName}','${student.Course}','${student.Sex}','${student.Picture}','${student.Email}','${student.Disabilities}','${student.PhoneNumber}',${student.Year},'${student.Group}','${student.Address}')`);
+    connection.query(`INSERT INTO tblStudent(fldName,fldLastName,fldCourse,fldGender,fldPicture,fldEmail, fldDisabilities, fldPhoneNumber, fldYear, fldGroup, fldAddress) 
+    VALUES('${student.Name}','${student.LastName}','${student.Course}','${student.Sex}','${student.Picture}','${student.Email}','${student.Disabilities}','${student.PhoneNumber}',${student.Year},'${student.Group}','${student.Address}')`);
     connection.end();
 }
 
 function addExchangeStudent(exchangeStudent){
     connection.connect();
-    connection.query(`INSERT INTO tblstudentexchange(fldName, fldLastName, fldGender, fldPicture, fldEmail, fldDisabilities, fldPhoneNumber, fldYear, fldGroup, fldNationality, fldAlmaID, fldDormID, fldMotivationalLetter) VALUES ('${exchangeStudent.Name}','${exchangeStudent.LastName}','${exchangeStudent.Sex}','${exchangeStudent.Picture}','${exchangeStudent.Email}','${exchangeStudent.Disabilities}','${exchangeStudent.PhoneNumber}','${exchangeStudent.Year}','${exchangeStudent.Group}','${exchangeStudent.Nationality}','${exchangeStudent.Alma}','${exchangeStudent.Dorm}','${exchangeStudent.Letter}')`)
+    connection.query(`INSERT INTO tblstudentexchange(fldName, fldLastName, fldGender, fldPicture, fldEmail, fldDisabilities, fldPhoneNumber, fldYear, fldGroup, fldNationality, fldAlmaID, fldDormID, fldMotivationalLetter) 
+    VALUES ('${exchangeStudent.Name}','${exchangeStudent.LastName}','${exchangeStudent.Sex}','${exchangeStudent.Picture}','${exchangeStudent.Email}','${exchangeStudent.Disabilities}','${exchangeStudent.PhoneNumber}','${exchangeStudent.Year}','${exchangeStudent.Group}','${exchangeStudent.Nationality}','${exchangeStudent.Alma}','${exchangeStudent.Dorm}','${exchangeStudent.Letter}')`)
     connection.end();
 }
 
 function addAlma(alma){
     connection.connect();
-    connection.query(`INSERT INTO tblalma(fldName, fldAddress, fldNotes, fldEmail, fldPhoneNumber) VALUES('${alma.Name}','${alma.Address}','${alma.Notes}','${alma.Email}','${alma.PhoneNumber}')`)
+    connection.query(`INSERT INTO tblalma(fldName, fldAddress, fldNotes, fldEmail, fldPhoneNumber) 
+    VALUES('${alma.Name}','${alma.Address}','${alma.Notes}','${alma.Email}','${alma.PhoneNumber}')`)
     connection.end()
 }
 
@@ -192,18 +195,36 @@ function removeExchange(studentID){
 /**UPDATE STUDENT */
 function updateStudent(studentid, student){
     connection.connect();
-
     console.log(`Updating ${student.Name} ${student.LastName}`);
-
-    connection.query(`UPDATE tblStudent SET fldName='${student.Name}' , fldLastName='${student.LastName}', fldCourse='${student.Course}', fldGender='${student.Sex}', fldPicture='${student.Picture}', fldEmail='${student.Email}', fldDisabilities='${student.Disabilities}', fldPhoneNumber='${student.PhoneNumber}'   WHERE fldstudentid=${studentid}`)
+    connection.query(`UPDATE tblStudent SET fldName='${student.Name}' , 
+    fldLastName='${student.LastName}', 
+    fldCourse='${student.Course}', 
+    fldGender='${student.Sex}', 
+    fldPicture='${student.Picture}', 
+    fldEmail='${student.Email}', 
+    fldDisabilities='${student.Disabilities}', 
+    fldPhoneNumber='${student.PhoneNumber}'  
+    WHERE fldstudentid=${studentid}`)
     connection.end();
 }
 
 function updateExchange(studentid, student){
     connection.connect();
-
     console.log(`Updating ${student.Name} ${student.LastName}`);
-    connection.query(`UPDATE tblstudentexchange SET fldName='${student.Name}' , fldLastName='${student.LastName}', fldGender='${student.Sex}', fldPicture='${student.Picture}', fldEmail='${student.Email}', fldDisabilities='${student.Disabilities}, fldPhoneNumber='${student.PhoneNumber}', fldYear='${student.Year}', fldGroup='${student.Group}', fldNationality='${student.Nationality}', fldAlmaID='${student.Alma}', fldDormID='${student.Dorm}', fldMotivationalLetter='${student.Letter}'`);
+    connection.query(`UPDATE tblstudentexchange SET fldName='${student.Name}' , 
+    fldLastName='${student.LastName}', 
+    fldGender='${student.Sex}', 
+    fldPicture='${student.Picture}', 
+    fldEmail='${student.Email}', 
+    fldDisabilities='${student.Disabilities}', 
+    fldPhoneNumber='${student.PhoneNumber}', 
+    fldYear='${student.Year}', 
+    fldGroup='${student.Group}', 
+    fldNationality='${student.Nationality}', 
+    fldAlmaID='${student.Alma}', 
+    fldDormID='${student.Dorm}', 
+    fldMotivationalLetter='${student.Letter}'  
+    WHERE fldStudentExchangeID=${studentid}`);
     connection.end();
 }
 
@@ -217,9 +238,10 @@ console.log("-------------------------------------------")
 //searchStudents("fldCourse","1");
 //searchOn("tblcourse","fldCourseName","MCT")
 //console.log(output)
-addExchangeStudent(tom);
+//addExchangeStudent(tom);
 //getAllExchange();
 //removeExchange(2);
+//updateExchange(3, tom);
 
 
 
