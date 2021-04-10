@@ -9,6 +9,15 @@ let connection = mysql.createConnection({
     database: 'academic02'
 });
 
+let myValue = []
+let output;//a
+  
+const setOutput = (rows) => {
+    output = rows;
+    console.log(output);
+}
+
+
 /**STUDENT TEMPLATES*/
 class student {
     constructor(Name, LastName, CourseID, Sex, Picture, Email, Disabilities, PhoneNumber, Year, Group, Address){
