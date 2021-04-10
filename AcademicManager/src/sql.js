@@ -209,7 +209,7 @@ function updateExchange(studentid, student){
 
 
 
-console.log("-------------------------------------------")
+//console.log("-------------------------------------------")
 //getAllStudents();
 //removeStudent(2);
 //updateStudent(1, jochem);
