@@ -8,17 +8,9 @@ let connection = mysql.createConnection({
     password: 'mitch123456789',
     database: 'academic03'
 });
-
 let myValue = []
 let output;//a
-  
-const setOutput = (rows) => {
-    output = rows;
-    console.log(output);
-}
 
-
-/**STUDENT TEMPLATES*/
 class student {
     constructor(Name, LastName, Course, Sex, Picture, Email, Disabilities, PhoneNumber, Year, Group, Address){
         this.Name = Name;
@@ -34,6 +26,19 @@ class student {
         this.Address = Address;
     }
 }
+
+
+let jochem = new student('Jochemmmm', 'Crab', 1, 'MALE', 'picture', 'jochem@jochem', 'Geen', '011111111111', '2', 'C', 'Leuven')
+let mitch = new student('Mitch', 'Van Hove', 1, 'MALE', 'picture2', 'jochem@jochem', 'Geen', '011456461111', '3', 'B', 'Dilbeek')
+
+  
+const setOutput = (rows) => {
+    output = rows;
+    console.log(output);
+}
+
+
+/**STUDENT TEMPLATES*/
 
 const DefaultStudent = {
     Name: "Mitch",
@@ -59,7 +64,6 @@ function searchOn(tbl,fld,value){
             console.log("Database COnnection Failed!", err);
             return;
         }
-
         console.log("Connected to Database");
         connection.query(query, (err,rows) =>{
             if (err) {
@@ -100,6 +104,11 @@ function getAllStudents(){
     connection.end();
 }
 
+function renderAllAlmas(){
+
+}
+
+
 /** REMOVE STUDENT*/
 function removeStudent(studentID){
   connection.connect();
@@ -124,8 +133,6 @@ function updateStudent(studentid, student){
     connection.end();
 }
 
-let jochem = new student('Jochemmmm', 'Crab', 1, 'MALE', 'picture', 'jochem@jochem', 'Geen', '011111111111', '2', 'C', 'Leuven')
-let mitch = new student('Mitch', 'Van Hove', 1, 'MALE', 'picture2', 'jochem@jochem', 'Geen', '011456461111', '3', 'B', 'Dilbeek')
 
 
 //getAllStudents();
@@ -133,10 +140,8 @@ let mitch = new student('Mitch', 'Van Hove', 1, 'MALE', 'picture2', 'jochem@joch
 //updateStudent(1, jochem);
 //addStudent(mitch);
 //searchStudents("fldCourse","1");
-console.log("-------------------------------------------")
-searchOn("tblcourse","fldCourseName","MCT")
-console.log(output)
-console.log("-------------------------------------------")
+//searchOn("tblcourse","fldCourseName","MCT")
+//console.log(output)
 
 
 
