@@ -8,7 +8,6 @@ let connection = mysql.createConnection({
     password: 'mitch123456789',
     database: 'academic02'
 });
-
 let myValue = []
 let output;//a
   
@@ -69,7 +68,7 @@ function searchOn(tbl,fld,value){
             setOutput(rows)
         })
     })
-    sleep(10)
+    sleep(500)
     connection.end()
 }
 
@@ -91,6 +90,7 @@ function addStudent(student){
     connection.query(`INSERT INTO tblStudent(fldName,fldLastName,fldCourseID,fldGender,fldPicture,fldEmail, fldDisabilities, fldPhoneNumber, fldYear, fldGroup, fldAddress) VALUES('${student.Name}','${student.LastName}','${student.CourseID}','${student.Sex}','${student.Picture}','${student.Email}','${student.Disabilities}','${student.PhoneNumber}',${student.Year},'${student.Group}','${student.Address}')`);
     connection.end();
 }
+
 /** FETCH ALL STUDENTS*/
 function getAllStudents(){
     connection.connect();
@@ -103,16 +103,13 @@ function getAllStudents(){
 /** REMOVE STUDENT*/
 function removeStudent(studentID){
   connection.connect();
-
   console.log(`Removing student with ID: ${studentID}`);
-
   connection.query(`DELETE FROM tblStudent WHERE fldstudentid = ${studentID}`, function (error, results, fields) {
       if (error) throw error;
       console.log('deleted ' + results.affectedRows + ' rows');
     })
   connection.end();
 }
-
 
 /**UPDATE STUDENT */
 function updateStudent(studentid, student){
@@ -124,16 +121,17 @@ function updateStudent(studentid, student){
     connection.end();
 }
 
+/**STUDENTS */
 let jochem = new student('Jochemmmm', 'Crab', 1, 'MALE', 'picture', 'jochem@jochem', 'Geen', '011111111111', '2', 'C', 'Leuven')
 let mitch = new student('Mitch', 'Van Hove', 1, 'MALE', 'picture2', 'jochem@jochem', 'Geen', '011456461111', '3', 'B', 'Dilbeek')
 
 
+console.log("-------------------------------------------")
 //getAllStudents();
 //removeStudent(2);
 //updateStudent(1, jochem);
 //addStudent(mitch);
 //searchStudents("fldCourseID","1");
-console.log("-------------------------------------------")
 searchOn("tblcourse","fldCourseName","MCT")
 console.log(output)
 console.log("-------------------------------------------")
