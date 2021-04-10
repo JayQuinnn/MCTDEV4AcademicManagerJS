@@ -9,7 +9,7 @@ let connection = mysql.createConnection({
 });
 
 let myValue = []
-let output;
+let output;//a
   
 const setOutput = (rows) => {
     output = rows;
