@@ -1,5 +1,6 @@
 /**INIT */
 const mysql = require('mysql');
+let sleep = require('system-sleep')
 let connection = mysql.createConnection({
     host: '94.224.211.168',
     port: '25568',
@@ -43,15 +44,24 @@ const DefaultStudent = {
 
 /**SEARCH */
 function searchOn(tbl,fld,value){
-    connection.connect();
-    let firstResult = "";
-    connection.query(`SELECT * FROM ${tbl} WHERE ${fld} = '${value}'`, function (error, results, fields){
-        if (error) throw error;
-        console.log(results);
-        firstResult = results[0];
+    const query = `SELECT * FROM ${tbl} WHERE ${fld} = '${value}'`
+    connection.connect(async(err) => {
+        if (err) {
+            console.log("Database COnnection Failed!", err);
+            return;
+        }
+
+        console.log("Connected to Database");
+        connection.query(query, (err,rows) =>{
+            if (err) {
+                console.log("internal error", err);
+                return;
+            }
+            setOutput(rows)
+        })
     })
-    connection.end();
-    return firstResult;
+    sleep(10)
+    connection.end()
 }
 
 function searchStudents(fld, value){
@@ -114,7 +124,10 @@ let mitch = new student('Mitch', 'Van Hove', 1, 'MALE', 'picture2', 'jochem@joch
 //updateStudent(1, jochem);
 //addStudent(mitch);
 //searchStudents("fldCourseID","1");
-
+console.log("-------------------------------------------")
+searchOn("tblcourse","fldCourseName","MCT")
+console.log(output)
+console.log("-------------------------------------------")
 
 
 
