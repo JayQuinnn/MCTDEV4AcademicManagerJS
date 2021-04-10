@@ -21,7 +21,7 @@ function createStudent(){
     const Student = {
         Name,
         LastName,
-        Course,
+        CourseID,
         StudentID,
         Sex,
         Picture,
