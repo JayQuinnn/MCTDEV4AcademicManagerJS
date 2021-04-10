@@ -6,7 +6,7 @@ let connection = mysql.createConnection({
     port: '25568',
     user: 'Mitch',
     password: 'mitch123456789',
-    database: 'academic02'
+    database: 'academic03'
 });
 
 let myValue = []
@@ -20,10 +20,10 @@ const setOutput = (rows) => {
 
 /**STUDENT TEMPLATES*/
 class student {
-    constructor(Name, LastName, CourseID, Sex, Picture, Email, Disabilities, PhoneNumber, Year, Group, Address){
+    constructor(Name, LastName, Course, Sex, Picture, Email, Disabilities, PhoneNumber, Year, Group, Address){
         this.Name = Name;
         this.LastName = LastName;
-        this.CourseID = CourseID;
+        this.Course = Course;
         this.Sex = Sex;
         this.Picture = Picture;
         this.Email = Email;
@@ -38,7 +38,7 @@ class student {
 const DefaultStudent = {
     Name: "Mitch",
     LastName: "Test Object",
-    CourseID: 1,
+    Course: "MCT",
     Sex: "MALE",
     Picture: "c://path/pictures/something/memes.jpg",
     Email: "hetTestObject@telenet.be",
@@ -88,7 +88,7 @@ function searchStudents(fld, value){
 /** ADD NEW STUDENT*/
 function addStudent(student){
     connection.connect();
-    connection.query(`INSERT INTO tblStudent(fldName,fldLastName,fldCourseID,fldGender,fldPicture,fldEmail, fldDisabilities, fldPhoneNumber, fldYear, fldGroup, fldAddress) VALUES('${student.Name}','${student.LastName}','${student.CourseID}','${student.Sex}','${student.Picture}','${student.Email}','${student.Disabilities}','${student.PhoneNumber}',${student.Year},'${student.Group}','${student.Address}')`);
+    connection.query(`INSERT INTO tblStudent(fldName,fldLastName,fldCourse,fldGender,fldPicture,fldEmail, fldDisabilities, fldPhoneNumber, fldYear, fldGroup, fldAddress) VALUES('${student.Name}','${student.LastName}','${student.Course}','${student.Sex}','${student.Picture}','${student.Email}','${student.Disabilities}','${student.PhoneNumber}',${student.Year},'${student.Group}','${student.Address}')`);
     connection.end();
 }
 /** FETCH ALL STUDENTS*/
@@ -120,7 +120,7 @@ function updateStudent(studentid, student){
 
     console.log(`Updating ${student.Name} ${student.LastName}`);
 
-    connection.query(`UPDATE tblStudent SET fldName='${student.Name}' , fldLastName='${student.LastName}', fldCourseID='${student.CourseID}', fldGender='${student.Sex}', fldPicture='${student.Picture}', fldEmail='${student.Email}', fldDisabilities='${student.Disabilities}', fldPhoneNumber='${student.PhoneNumber}'   WHERE fldstudentid=${studentid}`)
+    connection.query(`UPDATE tblStudent SET fldName='${student.Name}' , fldLastName='${student.LastName}', fldCourse='${student.Course}', fldGender='${student.Sex}', fldPicture='${student.Picture}', fldEmail='${student.Email}', fldDisabilities='${student.Disabilities}', fldPhoneNumber='${student.PhoneNumber}'   WHERE fldstudentid=${studentid}`)
     connection.end();
 }
 
@@ -132,7 +132,7 @@ let mitch = new student('Mitch', 'Van Hove', 1, 'MALE', 'picture2', 'jochem@joch
 //removeStudent(2);
 //updateStudent(1, jochem);
 //addStudent(mitch);
-//searchStudents("fldCourseID","1");
+//searchStudents("fldCourse","1");
 console.log("-------------------------------------------")
 searchOn("tblcourse","fldCourseName","MCT")
 console.log(output)
