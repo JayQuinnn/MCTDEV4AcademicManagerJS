@@ -203,8 +203,8 @@ function updateExchange(studentid, student){
     connection.connect();
 
     console.log(`Updating ${student.Name} ${student.LastName}`);
-
-    connection.query(`UPDATE tblstudentexchange SET fldName='${student.Name}' , fldLastName='${student.LastName}', fldGender='${student.Sex}', fldPicture='${'1213154'}' `)
+    connection.query(`UPDATE tblstudentexchange SET fldName='${student.Name}' , fldLastName='${student.LastName}', fldGender='${student.Sex}', fldPicture='${student.Picture}', fldEmail='${student.Email}', fldDisabilities='${student.Disabilities}, fldPhoneNumber='${student.PhoneNumber}', fldYear='${student.Year}', fldGroup='${student.Group}', fldNationality='${student.Nationality}', fldAlmaID='${student.Alma}', fldDormID='${student.Dorm}', fldMotivationalLetter='${student.Letter}'`);
+    connection.end();
 }
 
 
