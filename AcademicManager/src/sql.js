@@ -1,13 +1,20 @@
 /**INIT */
 const mysql = require('mysql');
 let sleep = require('system-sleep')
-let connection = mysql.createConnection({
-    host: '94.224.211.168',
-    port: '25568',
-    user: 'Mitch',
-    password: 'mitch123456789',
-    database: 'academic03'
-});
+defineConnection()
+
+function defineConnection(){
+    globalThis.connection = mysql.createConnection({
+        host: '94.224.211.168',
+        port: '25568',
+        user: 'Mitch',
+        password: 'mitch123456789',
+        database: 'academic04',
+    });
+
+}
+
+
 let myValue = []
 let output;//a
 
@@ -91,42 +98,35 @@ function searchOn(tbl,fld,value){
                 return;
             }
             setOutput(rows)
+            console.log(rows)
         })
     })
-    sleep(500)
     connection.end()
 }
 
 function searchStudents(fld, value){
-    connection.connect();
     let firstResult = "";
     connection.query(`SELECT * FROM tblStudent WHERE ${fld} = '${value}'`, function (error, results, fields){
         if (error) throw error;
         console.log(results);
         firstResult = results[0];
     })
-    connection.end();
     return firstResult;
 }
 
 /** ADD*/
 function addStudent(student){
-    connection.connect();
     console.log(`Adding ${student.Name} ${student.LastName}`)
     connection.query(`INSERT INTO tblStudent(fldName,fldLastName,fldCourse,fldGender,fldPicture,fldEmail, fldDisabilities, fldPhoneNumber, fldYear, fldGroup, fldAddress) 
     VALUES('${student.Name}','${student.LastName}','${student.Course}','${student.Sex}','${student.Picture}','${student.Email}','${student.Disabilities}','${student.PhoneNumber}',${student.Year},'${student.Group}','${student.Address}')`);
-    connection.end();
 }
 
 function addExchangeStudent(exchangeStudent){
-    connection.connect();
-    connection.query(`INSERT INTO tblstudentexchange(fldName, fldLastName, fldGender, fldPicture, fldEmail, fldDisabilities, fldPhoneNumber, fldYear, fldGroup, fldNationality, fldAlmaID, fldDormID, fldMotivationalLetter) 
-    VALUES ('${exchangeStudent.Name}','${exchangeStudent.LastName}','${exchangeStudent.Sex}','${exchangeStudent.Picture}','${exchangeStudent.Email}','${exchangeStudent.Disabilities}','${exchangeStudent.PhoneNumber}','${exchangeStudent.Year}','${exchangeStudent.Group}','${exchangeStudent.Nationality}','${exchangeStudent.Alma}','${exchangeStudent.Dorm}','${exchangeStudent.Letter}')`)
-    connection.end();
+    connection.query(`INSERT INTO tblstudentexchange(fldName, fldLastName, fldcourse, fldGender, fldPicture, fldEmail, fldDisabilities, fldPhoneNumber, fldYear, fldGroup, fldNationality, fldAlmaID, fldDormID, fldMotivationalLetter) 
+    VALUES ('${exchangeStudent.Name}','${exchangeStudent.LastName}','${exchangeStudent.Course}','${exchangeStudent.Sex}','${exchangeStudent.Picture}','${exchangeStudent.Email}','${exchangeStudent.Disabilities}','${exchangeStudent.PhoneNumber}','${exchangeStudent.Year}','${exchangeStudent.Group}','${exchangeStudent.Nationality}','${exchangeStudent.AlmaID}','${exchangeStudent.Dorm}','${exchangeStudent.Letter}')`)
 }
 
 function addAlma(alma){
-    //connection.connect();
     connection.query(`INSERT INTO tblalma(fldName, fldAddress, fldNotes, fldEmail, fldPhoneNumber, fldKey) VALUES('${alma.Name}','${alma.Address}','${alma.Notes}','${alma.Email}','${alma.PhoneNumber}', '${alma.Name + alma.PhoneNumber}')`,
     function (error, results, fields){
         if (error) {
@@ -134,30 +134,24 @@ function addAlma(alma){
             throw error
         }
     })
-    //connection.end()
 }
 
 /** FETCH ALL*/
 function getAllStudents(){
-    connection.connect();
     connection.query(`SELECT * FROM tblStudent`,function(error, results, field){
         console.log(results)
     })
-    connection.end();
 }
 
 function getAllExchange(){
-    connection.connect();
     connection.query(`SELECT * FROM tblstudentExchange`, function(error, results, field){
         console.log(results)
     })
-    connection.end();
 }
 
 function renderAllAlmas(){
     let allAlma = document.getElementById('allAlma');
     let htmlString = ``;
-    connection.connect();
     connection.query(`SELECT * FROM tblalma`,function(error, results, field){
         console.log(results);
         results.forEach(element => {
@@ -172,34 +166,58 @@ function renderAllAlmas(){
             allAlma.innerHTML = htmlString;
         });
     })
-    connection.end();
+}
+
+function renderAlmaOptions(){
+    let AlmaOptions = document.getElementById('AlmaOptions')
+    let htmlString = ``
+    try {
+        
+    } catch (error) {
+        
+    }
+    connection.query(`SELECT * FROM tblAlma`,function(error, results, field){
+        console.log(results);
+        htmlString = `<div class="form-group">
+                    <label for="AlmaName">Alma Name</label>
+                    <select class="form-control" id="AlmaName">`
+        results.forEach(element => {
+            htmlString = htmlString + `
+            <option value="${element.fldAlmaID}">${element.fldName}</option>`;    
+        });
+        htmlString = htmlString + `</select>`
+        AlmaOptions.innerHTML = htmlString;
+    })
 }
 
 
 /** REMOVE*/
 function removeStudent(studentID){
-  connection.connect();
   console.log(`Removing student with ID: ${studentID}`);
   connection.query(`DELETE FROM tblStudent WHERE fldstudentid = ${studentID}`, function (error, results, fields) {
       if (error) throw error;
       console.log('deleted ' + results.affectedRows + ' rows');
     })
-  connection.end();
 }
 
 function removeExchange(studentID){
-    connection.connect();
-    console.log(`Removing student with ID: ${studentID}`);
+    console.log(`Removing ExchangeStudent with ID: ${studentID}`);
     connection.query(`DELETE FROM tblstudentexchange WHERE fldStudentExchangeID = ${studentID}`, function(error, results, fields){
         if(error) throw error;
         console.log('deleted ' + results.affectedRows + ' rows');
     })
-    connection.end();
+}
+
+function removeAlma(almaID){
+    console.log(`Removing student with ID: ${almaID}`);
+    connection.query(`DELETE FROM tblAlma WHERE fldAlmaID = ${almaID}`, function(error, results, fields){
+        if(error) throw error;
+        console.log('deleted ' + results.affectedRows + ' rows');
+    })
 }
 
 /**UPDATE STUDENT */
 function updateStudent(studentid, student){
-    connection.connect();
     console.log(`Updating ${student.Name} ${student.LastName}`);
     connection.query(`UPDATE tblStudent SET fldName='${student.Name}' , 
     fldLastName='${student.LastName}', 
@@ -210,11 +228,9 @@ function updateStudent(studentid, student){
     fldDisabilities='${student.Disabilities}', 
     fldPhoneNumber='${student.PhoneNumber}'  
     WHERE fldstudentid=${studentid}`)
-    connection.end();
 }
 
 function updateExchange(studentid, student){
-    connection.connect();
     console.log(`Updating ${student.Name} ${student.LastName}`);
     connection.query(`UPDATE tblstudentexchange SET fldName='${student.Name}' , 
     fldLastName='${student.LastName}', 
@@ -230,7 +246,6 @@ function updateExchange(studentid, student){
     fldDormID='${student.Dorm}', 
     fldMotivationalLetter='${student.Letter}'  
     WHERE fldStudentExchangeID=${studentid}`);
-    connection.end();
 }
 
 
