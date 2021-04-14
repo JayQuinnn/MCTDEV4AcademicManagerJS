@@ -132,6 +132,7 @@ function addAlma(alma){
     function (error, results, fields){
         if (error) {
             console.log("ALMA ALREADY EXISTS");
+            alert("ALMA ALREADY EXISTS");
             throw error
         }
     })
