@@ -4,3 +4,6 @@ body {
   max-width: 38rem;
   padding: 2rem;
 }
+.row:hover{
+  color: rgb(25, 154, 206);
+}

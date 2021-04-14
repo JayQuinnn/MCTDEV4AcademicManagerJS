@@ -150,18 +150,22 @@ function getAllExchange(){
 }
 
 function renderAllAlmas(){
+    let nav = document.getElementById('navigationbar');
+    nav.innerHTML = `<a href="../index.html"><p>Back</p></a>`
+
     let allAlma = document.getElementById('allAlma');
     let htmlString = ``;
     connection.query(`SELECT * FROM tblalma`,function(error, results, field){
         console.log(results);
         results.forEach(element => {
             htmlString = htmlString + `
-            <div class="row">
+            <div class="row d-flex justify-content-start">
                 <div class="col">${element.fldName}</div>
                 <div class="col">${element.fldAddress}</div>
                 <div class="col">${element.fldNotes}</div>
                 <div class="col">${element.fldEmail}</div>
                 <div class="col">${element.fldPhoneNumber}</div>
+                <div class="col"><button type="button" onclick="renderDetailedView('${element.fldName}','${element.fldAddress}','${element.fldNotes}','${element.fldEmail}','${element.fldPhoneNumber}')"  class="btn btn-info">Info</button></div>
             </div>`;
             allAlma.innerHTML = htmlString;
         });
