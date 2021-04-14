@@ -7,3 +7,7 @@ body {
 .row:hover{
   color: rgb(25, 154, 206);
 }
+.pfp{
+  height: 200px;
+  width: auto;
+}
