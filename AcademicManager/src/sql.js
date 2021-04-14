@@ -159,7 +159,7 @@ function renderAllAlmas(){
         console.log(results);
         results.forEach(element => {
             htmlString = htmlString + `
-            <div class="row d-flex justify-content-start">
+            <div class="row d-flex justify-content-start border-bottom">
                 <div class="col">${element.fldName}</div>
                 <div class="col">${element.fldAddress}</div>
                 <div class="col">${element.fldNotes}</div>
@@ -182,7 +182,7 @@ function renderAllStudents(){
         console.log(results);
         results.forEach(element => {
             htmlString = htmlString + `
-            <div class="row d-flex justify-content-start">
+            <div class="row d-flex justify-content-start border-bottom">
                 <div class="col">${element.fldName}</div>
                 <div class="col">${element.fldLastName}</div>
                 <div class="col">${element.fldCourse}</div>
@@ -209,7 +209,7 @@ function renderAllExchangeStudents(){
         console.log(results);
         results.forEach(element => {
             htmlString = htmlString + `
-            <div class="row d-flex justify-content-start">
+            <div class="row d-flex justify-content-start border-bottom">
                 <div class="col">${element.fldName}</div>
                 <div class="col">${element.fldLastName}</div>
                 <div class="col">${element.fldCourse}</div>

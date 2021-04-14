@@ -10,6 +10,7 @@ function renderDetailedView(fldName, fldLastName, fldCourse, fldGender, fldPictu
     let allAlma = document.getElementById('allStudent');
     let htmlString = `
         <h1>${fldName} ${fldLastName}</h1>
+        <img class="pfp rounded float-right" src="${fldPicture}" alt="">
         <p>${fldGender}</p>
         <p>Course: ${fldCourse}</p>
         <p>Year: ${fldYear}</p>
