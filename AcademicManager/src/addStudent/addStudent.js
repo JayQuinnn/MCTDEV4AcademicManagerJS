@@ -6,6 +6,7 @@ function createStudent(){
     
     const Name = document.getElementById("Name").value;
     const LastName = document.getElementById("LastName").value;
+    const Course = document.getElementById("Course").value;
     const Sex = document.getElementById("Sex").value;
     const Picture = document.getElementById("Picture").value;
     const Email = document.getElementById("Email").value;
@@ -20,6 +21,7 @@ function createStudent(){
         Name,
         LastName,
         Sex,
+        Course,
         Picture,
         Email,
         Disabilities,

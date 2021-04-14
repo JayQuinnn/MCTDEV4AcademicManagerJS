@@ -117,12 +117,13 @@ function searchStudents(fld, value){
 /** ADD*/
 function addStudent(student){
     console.log(`Adding ${student.Name} ${student.LastName}`)
-    connection.query(`INSERT INTO tblStudent(fldName,fldLastName,fldCourse,fldGender,fldPicture,fldEmail, fldDisabilities, fldPhoneNumber, fldYear, fldGroup, fldAddress) 
-    VALUES('${student.Name}','${student.LastName}','${student.Course}','${student.Sex}','${student.Picture}','${student.Email}','${student.Disabilities}','${student.PhoneNumber}',${student.Year},'${student.Group}','${student.Address}')`);
+    connection.query(`INSERT INTO tblstudent (fldName, fldLastName, fldCourse, fldGender, fldPicture, fldEmail, fldDisabilities, fldPhoneNumber, fldYear, fldGroup, fldAddress) 
+    VALUES('${student.Name}','${student.LastName}','${student.Course}','${student.Sex}','${student.Picture}','${student.Email}','${student.Disabilities}','${student.PhoneNumber}','${student.Year}','${student.Group}','${student.Address}')`);
+
 }
 
 function addExchangeStudent(exchangeStudent){
-    connection.query(`INSERT INTO tblstudentexchange(fldName, fldLastName, fldcourse, fldGender, fldPicture, fldEmail, fldDisabilities, fldPhoneNumber, fldYear, fldGroup, fldNationality, fldAlmaID, fldDormID, fldMotivationalLetter) 
+    connection.query(`INSERT INTO tblstudentexchange(fldName, fldLastName, fldCourse, fldGender, fldPicture, fldEmail, fldDisabilities, fldPhoneNumber, fldYear, fldGroup, fldNationality, fldAlmaID, fldDormID, fldMotivationalLetter) 
     VALUES ('${exchangeStudent.Name}','${exchangeStudent.LastName}','${exchangeStudent.Course}','${exchangeStudent.Sex}','${exchangeStudent.Picture}','${exchangeStudent.Email}','${exchangeStudent.Disabilities}','${exchangeStudent.PhoneNumber}','${exchangeStudent.Year}','${exchangeStudent.Group}','${exchangeStudent.Nationality}','${exchangeStudent.AlmaID}','${exchangeStudent.Dorm}','${exchangeStudent.Letter}')`)
 }
 
@@ -159,13 +160,13 @@ function renderAllAlmas(){
         console.log(results);
         results.forEach(element => {
             htmlString = htmlString + `
-            <div class="row d-flex justify-content-start border-bottom">
-                <div class="col">${element.fldName}</div>
-                <div class="col">${element.fldAddress}</div>
-                <div class="col">${element.fldNotes}</div>
-                <div class="col">${element.fldEmail}</div>
-                <div class="col">${element.fldPhoneNumber}</div>
-                <div class="col"><button type="button" onclick="renderDetailedView('${element.fldName}','${element.fldAddress}','${element.fldNotes}','${element.fldEmail}','${element.fldPhoneNumber}')"  class="btn btn-info">Info</button></div>
+            <div class="row d-flex justify-content-between border-bottom">
+                <div class="col-2">${element.fldName}</div>
+                <div class="col-2">${element.fldAddress}</div>
+                <div class="col-2">${element.fldNotes}</div>
+                <div class="col-2">${element.fldEmail}</div>
+                <div class="col-2">${element.fldPhoneNumber}</div>
+                <div style="float: right;"><button type="button" onclick="renderDetailedView('${element.fldName}','${element.fldAddress}','${element.fldNotes}','${element.fldEmail}','${element.fldPhoneNumber}')"  class="btn btn-info">Info</button></div>
             </div>`;
             allAlma.innerHTML = htmlString;
         });
@@ -177,23 +178,34 @@ function renderAllStudents(){
     nav.innerHTML = `<a href="../index.html"><p>Back</p></a>`
 
     let allAlma = document.getElementById('allStudent');
-    let htmlString = ``;
+    let htmlString = `<div class="row d-flex border-bottom">
+        <div class="col-1">Name</div>
+        <div class="col-1">Surname</div>
+        <div class="col-1">Course</div>
+        <div class="col-1">Gender</div>
+        <div class="col-2">Email</div>
+        <div class="col-1">Disabilities</div>
+        <div class="col-1">Phone Number</div>
+        <div class="col-1">Year</div>
+        <div class="col-1">Group</div>
+        <div class="col-1">Address</div>
+      </div>`;
     connection.query(`SELECT * FROM tblstudent`,function(error, results, field){
         console.log(results);
         results.forEach(element => {
             htmlString = htmlString + `
             <div class="row d-flex justify-content-start border-bottom">
-                <div class="col">${element.fldName}</div>
-                <div class="col">${element.fldLastName}</div>
-                <div class="col">${element.fldCourse}</div>
-                <div class="col">${element.fldGender}</div>
-                <div class="col">${element.fldEmail}</div>
-                <div class="col">${element.fldDisabilities}</div>
-                <div class="col">${element.fldPhoneNumber}</div>
-                <div class="col">${element.fldYear}</div>
-                <div class="col">${element.fldGroup}</div>
-                <div class="col">${element.fldAddress}</div>
-                <div class="col"><button type="button" onclick="renderDetailedView('${element.fldName}','${element.fldLastName}','${element.fldCourse}','${element.fldGender}','${element.fldPicture}','${element.fldEmail}','${element.fldDisabilities}','${element.fldPhoneNumber}','${element.fldYear}','${element.fldGroup}','${element.fldAddress}')"  class="btn btn-info">Info</button></div>
+                <div class="col-1">${element.fldName}</div>
+                <div class="col-1">${element.fldLastName}</div>
+                <div class="col-1">${element.fldCourse}</div>
+                <div class="col-1">${element.fldGender}</div>
+                <div class="col-2">${element.fldEmail}</div>
+                <div class="col-1">${element.fldDisabilities}</div>
+                <div class="col-1">${element.fldPhoneNumber}</div>
+                <div class="col-1">${element.fldYear}</div>
+                <div class="col-1">${element.fldGroup}</div>
+                <div class="col-1">${element.fldAddress}</div>
+                <div class="col-1"><button type="button" onclick="renderDetailedView('${element.fldName}','${element.fldLastName}','${element.fldCourse}','${element.fldGender}','${element.fldPicture}','${element.fldEmail}','${element.fldDisabilities}','${element.fldPhoneNumber}','${element.fldYear}','${element.fldGroup}','${element.fldAddress}')"  class="btn btn-info">Info</button></div>
             </div>`;
             allAlma.innerHTML = htmlString;
         });
@@ -204,23 +216,34 @@ function renderAllExchangeStudents(){
     nav.innerHTML = `<a href="../index.html"><p>Back</p></a>`
 
     let allAlma = document.getElementById('allStudent');
-    let htmlString = ``;
+    let htmlString = `<div class="row d-flex border-bottom">
+        <div class="col-1">Name</div>
+        <div class="col-1">Surname</div>
+        <div class="col-1">Course</div>
+        <div class="col-1">Gender</div>
+        <div class="col-2">Email</div>
+        <div class="col-1">Disabilities</div>
+        <div class="col-1">Phone Number</div>
+        <div class="col-1">Year</div>
+        <div class="col-1">Group</div>
+        <div class="col-1">Nationality</div>
+        <div class="col-1">Action</div>
+      </div>`;
     connection.query(`SELECT * FROM tblstudentexchange`,function(error, results, field){
         console.log(results);
         results.forEach(element => {
             htmlString = htmlString + `
             <div class="row d-flex justify-content-start border-bottom">
-                <div class="col">${element.fldName}</div>
-                <div class="col">${element.fldLastName}</div>
-                <div class="col">${element.fldCourse}</div>
-                <div class="col">${element.fldGender}</div>
-                <div class="col">${element.fldEmail}</div>
-                <div class="col">${element.fldDisabilities}</div>
-                <div class="col">${element.fldPhoneNumber}</div>
-                <div class="col">${element.fldYear}</div>
-                <div class="col">${element.fldGroup}</div>
-                <div class="col">${element.fldNationality}</div>
-                <div class="col">${element.fldMotivationalLetter}</div>
+                <div class="col-1">${element.fldName}</div>
+                <div class="col-1">${element.fldLastName}</div>
+                <div class="col-1">${element.fldCourse}</div>
+                <div class="col-1">${element.fldGender}</div>
+                <div class="col-2">${element.fldEmail}</div>
+                <div class="col-1">${element.fldDisabilities}</div>
+                <div class="col-1">${element.fldPhoneNumber}</div>
+                <div class="col-1">${element.fldYear}</div>
+                <div class="col-1">${element.fldGroup}</div>
+                <div class="col-1">${element.fldNationality}</div>
                 <div class="col"><button type="button" onclick="renderDetailedView('${element.fldName}','${element.fldLastName}','${element.fldCourse}','${element.fldGender}','${element.fldPicture}','${element.fldEmail}','${element.fldDisabilities}','${element.fldPhoneNumber}','${element.fldYear}','${element.fldGroup}','${element.fldNationality}','${element.fldMotivationalLetter}')"  class="btn btn-info">Info</button></div>
             </div>`;
             allAlma.innerHTML = htmlString;
