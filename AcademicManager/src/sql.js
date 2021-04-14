@@ -199,6 +199,34 @@ function renderAllStudents(){
         });
     })
 }
+function renderAllExchangeStudents(){
+    let nav = document.getElementById('navigationbar');
+    nav.innerHTML = `<a href="../index.html"><p>Back</p></a>`
+
+    let allAlma = document.getElementById('allStudent');
+    let htmlString = ``;
+    connection.query(`SELECT * FROM tblstudentexchange`,function(error, results, field){
+        console.log(results);
+        results.forEach(element => {
+            htmlString = htmlString + `
+            <div class="row d-flex justify-content-start">
+                <div class="col">${element.fldName}</div>
+                <div class="col">${element.fldLastName}</div>
+                <div class="col">${element.fldCourse}</div>
+                <div class="col">${element.fldGender}</div>
+                <div class="col">${element.fldEmail}</div>
+                <div class="col">${element.fldDisabilities}</div>
+                <div class="col">${element.fldPhoneNumber}</div>
+                <div class="col">${element.fldYear}</div>
+                <div class="col">${element.fldGroup}</div>
+                <div class="col">${element.fldNationality}</div>
+                <div class="col">${element.fldMotivationalLetter}</div>
+                <div class="col"><button type="button" onclick="renderDetailedView('${element.fldName}','${element.fldLastName}','${element.fldCourse}','${element.fldGender}','${element.fldPicture}','${element.fldEmail}','${element.fldDisabilities}','${element.fldPhoneNumber}','${element.fldYear}','${element.fldGroup}','${element.fldNationality}','${element.fldMotivationalLetter}')"  class="btn btn-info">Info</button></div>
+            </div>`;
+            allAlma.innerHTML = htmlString;
+        });
+    })
+}
 
 
 
