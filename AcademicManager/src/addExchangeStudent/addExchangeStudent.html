@@ -56,21 +56,42 @@
       <p>Back</p>
     </a>
     <form>
-      <div class="form-group">
-        <label for="Name">Name</label>
-        <input type="text" class="form-control" id="Name" placeholder="Name">
+      <div class="row">
+        <div class="form-group col">
+          <label for="Name">Name</label>
+          <input type="text" class="form-control" id="Name" placeholder="Name">
+        </div>
+        <div class="form-group col">
+          <label for="LastName">Last Name</label>
+          <input type="text" class="form-control" id="LastName" placeholder="Last Name">
+        </div>
       </div>
-      <div class="form-group">
-        <label for="LastName">Last Name</label>
-        <input type="text" class="form-control" id="LastName" placeholder="Last Name">
-      </div>
-      <div class="form-group">
-        <label for="Course">Course</label>
-        <select class="form-control" id="Course">
-          <option>MCT</option>
-          <option>COMMA</option>
-          <option>DIGX</option>
-        </select>
+      <div class="row">
+        <div class="form-group col">
+          <label for="Course">Course</label>
+          <select class="form-control" id="Course">
+            <option>MCT</option>
+            <option>COMMA</option>
+            <option>DIGX</option>
+          </select>
+        </div>
+        <div class="form-group col">
+          <label for="Year">Year</label>
+          <select class="form-control" id="Year">
+            <option value="ONE">ONE</option>
+            <option value="TWO">TWO</option>
+            <option value="THREE">THREE</option>
+            <option>FLEX</option>
+          </select>
+        </div>
+        <div class="form-group col">
+          <label for="Group">Group</label>
+          <select class="form-control" id="Group">
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+          </select>
+        </div>
       </div>
       <div class="form-group">
         <label for="Sex">Gender</label>
@@ -98,24 +119,7 @@
         <input type="tel" class="form-control" id="PhoneNumber" placeholder="Phone Number">
       </div>
       <div class="form-group">
-        <label for="Year">Year</label>
-        <select class="form-control" id="Year">
-          <option value="ONE">ONE</option>
-          <option value="TWO">TWO</option>
-          <option value="THREE">THREE</option>
-          <option>FLEX</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="Group">Group</label>
-        <select class="form-control" id="Group">
-          <option>A</option>
-          <option>B</option>
-          <option>C</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="Duration">Duration</label>
+        <label for="Duration">End of stay</label>
         <input type="date" class="form-control" id="Duration">
       </div>
       <div class="form-group">

@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, shell,Menu } = require('electron');
+const { app, BrowserWindow, ipcMain, shell, Menu } = require('electron');
 const path = require('path');
 const os = require("os");
 const fs = require("fs");
@@ -25,12 +25,12 @@ const createWindow = () => {
   mainWindow.webContents.openDevTools();
 
   let workerWindow = new BrowserWindow();
-    workerWindow.loadURL("file://" + __dirname + "/worker.html");
-    // workerWindow.hide();
-    workerWindow.webContents.openDevTools();
-    workerWindow.on("closed", () => {
-        workerWindow = undefined;
-    });
+  workerWindow.loadURL("file://" + __dirname + "/worker.html");
+  // workerWindow.hide();
+  workerWindow.webContents.openDevTools();
+  workerWindow.on("closed", () => {
+    workerWindow = undefined;
+  });
 };
 
 // This method will be called when Electron has finished
@@ -56,24 +56,24 @@ app.on('activate', () => {
 });
 
 ipcMain.on("printPDF", (event, content) => {
-    console.log(content);
-    workerWindow.webContents.send("printPDF", content);
+  console.log(content);
+  workerWindow.webContents.send("printPDF", content);
 });
 // when worker window is ready
 ipcMain.on("readyToPrintPDF", (event) => {
-    const pdfPath = path.join(os.tmpdir(), 'print.pdf');
-    // Use default printing options
-    workerWindow.webContents.printToPDF({}).then((data) => {
-        fs.writeFile(pdfPath, data, function (error) {
-            if (error) {
-                throw error
-            }
-            shell.openItem(pdfPath)
-            event.sender.send('wrote-pdf', pdfPath)
-        })
-    }).catch((error) => {
-       throw error;
+  const pdfPath = path.join(os.tmpdir(), 'print.pdf');
+  // Use default printing options
+  workerWindow.webContents.printToPDF({}).then((data) => {
+    fs.writeFile(pdfPath, data, function (error) {
+      if (error) {
+        throw error
+      }
+      shell.openItem(pdfPath)
+      event.sender.send('wrote-pdf', pdfPath)
     })
+  }).catch((error) => {
+    throw error;
+  })
 });
 
 
