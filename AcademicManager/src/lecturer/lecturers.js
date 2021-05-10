@@ -28,7 +28,7 @@ function renderAllLecturers() {
                 '${element.fldEmail}','${element.fldPhoneNumber}','${element.fldPaygrade}')"  
                 class="btn btn-info">Info</button></div>
                 <div style="float: right;"><button type="button" onclick="removeLecturer(${element.fldlecturerID})"  
-                class="btn btn-warning">REMOVE</button></div>
+                class="btn btn-danger">REMOVE</button></div>
             </div>`;
             allAlma.innerHTML = htmlString;
         });
