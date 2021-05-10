@@ -15,6 +15,7 @@ const createWindow = () => {
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
+      nodeIntegrationInWorker: true,
     }
   });
 
@@ -24,13 +25,20 @@ const createWindow = () => {
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
 
-  let workerWindow = new BrowserWindow();
-  workerWindow.loadURL("file://" + __dirname + "/worker.html");
-  workerWindow.hide();
-  workerWindow.webContents.openDevTools();
-  workerWindow.on("closed", () => {
-  workerWindow = undefined;
-  });
+  // let workerWindow = new BrowserWindow({
+  //   webPreferences: {
+  //     contextIsolation: false,
+  //     nodeIntegrationInWorker: true,
+  //   }
+  // });
+  // console.log(workerWindow)
+  // workerWindow.loadURL("file://" + __dirname + "/worker.html");
+  // //workerWindow.hide();
+  // workerWindow.webContents.openDevTools();
+  // console.log(workerWindow)
+  // //workerWindow.on("closed", () => {
+  // //workerWindow = undefined;
+  // //});
 };
 
 // This method will be called when Electron has finished
@@ -55,26 +63,42 @@ app.on('activate', () => {
   }
 });
 
-ipcMain.on("printPDF", (event, content) => {
-  console.log(content);
-  workerWindow.webContents.send("printPDF", content);
-});
-// when worker window is ready
-ipcMain.on("readyToPrintPDF", (event) => {
-  const pdfPath = path.join(os.tmpdir(), 'print.pdf');
-  // Use default printing options
-  workerWindow.webContents.printToPDF({}).then((data) => {
-    fs.writeFile(pdfPath, data, function (error) {
-      if (error) {
-        throw error
-      }
-      shell.openItem(pdfPath)
-      event.sender.send('wrote-pdf', pdfPath)
-    })
-  }).catch((error) => {
-    throw error;
-  })
-});
+// ipcMain.on("printPDF", (event, content) => {
+//   console.log(content);
+//   const pdfPath = 'some-ducking-pdf.pdf';
+//   const win = BrowserWindow.fromWebContents(event.sender);
+//   console.log(win.webContents)
+
+//   win.webContents._printToPDF({}, (error, content) => {
+//     console.log("YEET1")
+//     if (error) return console.log(error.message);
+//     console.log("YEET2")
+
+//     fs.writeFile(pdfPath, content, err => {
+//       console.log("YEET3")
+//       if (err) return console.log(err.message);
+//       shell.openExternal('file://' + pdfPath);
+//       event.sender.send('wrote-pdf', pdfPath);
+//     })
+    
+//   })
+// });
+// // when worker window is ready
+// ipcMain.on("readyToPrintPDF", (event) => {
+//   const pdfPath = 'C:/Users/joche/OneDrive/Documenten/pdfexports/some-ducking-pdf.pdf'
+//   const win = BrowserWindow.fromWebContents(event.sender);
+
+//   win.webContents.printToPDF({}, (error, data) => {
+//     if (error) return console.log(error.message);
+
+//     fs.writeFile(pdfPath, data, err => {
+//       if (err) return console.log(err.message);
+//       shell.openExternal('file://' + pdfPath);
+//       event.sender.send('wrote-pdf', pdfPath);
+//     })
+    
+//   })
+// });
 
 
 

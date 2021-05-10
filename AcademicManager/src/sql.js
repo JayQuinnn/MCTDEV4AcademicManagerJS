@@ -1,4 +1,5 @@
 /**INIT */
+const pdf = require('html-pdf');
 const mysql = require('mysql');
 let sleep = require('system-sleep')
 defineConnection()
@@ -259,7 +260,14 @@ function updateExchange(studentid, student) {
     WHERE fldStudentExchangeID=${studentid}`);
 }
 
-
+function printPDF(pdfBody, fldName, fldLastName){
+    console.log(pdfBody)
+    let options = { format: 'Letter' };
+    pdf.create(pdfBody, options).toFile(`/pdfexports/${fldName}${fldLastName}.pdf`, function(err, res) {
+        if(err) return console.log(error);
+        console.log(res);
+    })
+}
 
 //console.log("-------------------------------------------")
 //getAllStudents();

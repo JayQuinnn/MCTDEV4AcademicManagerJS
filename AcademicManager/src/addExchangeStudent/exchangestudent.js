@@ -38,17 +38,7 @@ function renderAllExchangeStudents() {
     })
 }
 
-renderAllExchangeStudents();
-const ipcRenderer = require("electron").ipcRenderer;
-        // cannot send message to other windows directly https://github.com/electron/electron/issues/991
-        function sendCommandToWorker(content) {
-            ipcRenderer.send("printPDF", content);
-        }
 
-        
-function doSomething(iets){
-    console.log(iets);
-}
 
 function renderDetailedView(fldName, fldLastName, fldCourse, fldGender, fldPicture, fldEmail, fldDisabilities, fldPhoneNumber, fldYear, fldGroup, fldNationality, fldLetter){
     let nav = document.getElementById('navigationbar');
@@ -73,7 +63,16 @@ function renderDetailedView(fldName, fldLastName, fldCourse, fldGender, fldPictu
     `;
     allAlma.innerHTML = htmlString;
     document.getElementById("PDF").addEventListener("click", () => {
-            // send whatever you like
-            sendCommandToWorker("<h1> hello </h1>");
+        const pdfBody = document.getElementById('allStudent').innerHTML;
+        // send whatever you like
+        printPDF(pdfBody, fldName, fldLastName);
         });
 }
+
+const ipcRenderer = require("electron").ipcRenderer;
+        // cannot send message to other windows directly https://github.com/electron/electron/issues/991
+        function sendCommandToWorker(content) {
+            ipcRenderer.send("printPDF", content);
+}
+
+renderAllExchangeStudents();
