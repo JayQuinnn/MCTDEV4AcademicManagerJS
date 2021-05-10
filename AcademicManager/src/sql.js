@@ -122,6 +122,12 @@ function addStudent(student) {
 
 }
 
+function addLecturer(lecturer) {
+    console.log(`Adding ${lecturer.Name} ${lecturer.LastName}`)
+    connection.query(`INSERT INTO tbllecturer(fldName,fldLastName,fldEmail, fldPhoneNumber, fldPaygrade, fldEmploymentStatus, fldKey) 
+    VALUES ('${lecturer.Name}', '${lecturer.LastName}', '${lecturer.Email}', '${lecturer.PhoneNumber}', '${lecturer.Paygrade}', 'Is currently teaching', '${lecturer.Name + lecturer.LastName + lecturer.Email}')`)
+}
+
 function addExchangeStudent(exchangeStudent) {
     connection.query(`INSERT INTO tblstudentexchange(fldName, fldLastName, fldCourse, fldGender, fldPicture, fldEmail, fldDisabilities, fldPhoneNumber, fldYear, fldGroup, fldNationality, fldAlmaID, fldDormID, fldMotivationalLetter) 
     VALUES ('${exchangeStudent.Name}','${exchangeStudent.LastName}','${exchangeStudent.Course}','${exchangeStudent.Sex}','${exchangeStudent.Picture}','${exchangeStudent.Email}','${exchangeStudent.Disabilities}','${exchangeStudent.PhoneNumber}','${exchangeStudent.Year}','${exchangeStudent.Group}','${exchangeStudent.Nationality}','${exchangeStudent.AlmaID}','${exchangeStudent.Dorm}','${exchangeStudent.Letter}')`)

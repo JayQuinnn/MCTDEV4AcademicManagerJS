@@ -3,12 +3,13 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Academic Manager - Alma Dashboard</title>
+  <title>Academic Manager - Add an Exchange Student</title>
   <link rel="stylesheet" href="../index.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script defer src="../sql.js"></script>
-  <script defer src="alma.js"></script>
+  <script defer src="addlecturer.js"></script>
+
 </head>
 
 <body>
@@ -42,8 +43,8 @@
           <div class="dropdown">
             <button class="dropbtn nav-link active">Alma</button>
             <div class="dropdown-content">
-              <a href="./alma.html">Dashboard</a>
-              <a href="./addAlma.html">Add an Alma</a>
+              <a href="../alma/alma.html">Dashboard</a>
+              <a href="../alma/addAlma.html">Add an Alma</a>
             </div>
           </div>
         </li>
@@ -60,12 +61,39 @@
     </div>
   </nav>
   <main>
-    <div id="navigationbar">
-
-    </div>
-    <div id="allAlma" class="container" style="width: 1900px;">
-
-    </div>
+    <a href="../index.html">
+      <p>Back</p>
+    </a>
+    <form>
+      <div class="row">
+        <div class="form-group col">
+          <label for="Name">Name</label>
+          <input type="text" class="form-control" id="Name" placeholder="Name">
+        </div>
+        <div class="form-group col">
+          <label for="LastName">Last Name</label>
+          <input type="text" class="form-control" id="LastName" placeholder="Last Name">
+        </div>
+      </div>
+        <div class="form-group">
+          <label for="paygrade">Paygrade</label>
+          <select class="form-control" id="paygrade">
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="Email">Email address</label>
+        <input type="email" class="form-control" id="Email" placeholder="name@example.com">
+      </div>
+      <div class="form-group">
+        <label for="PhoneNumber">Phone Number</label>
+        <input type="tel" class="form-control" id="PhoneNumber" placeholder="Phone Number">
+      </div>
+      <button id="FormButton" class="btn btn-primary">Submit</button>
+    </form>
   </main>
 </body>
 

@@ -24,13 +24,13 @@ const createWindow = () => {
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
 
-  let workerWindow = new BrowserWindow();
-  workerWindow.loadURL("file://" + __dirname + "/worker.html");
-  // workerWindow.hide();
-  workerWindow.webContents.openDevTools();
-  workerWindow.on("closed", () => {
-    workerWindow = undefined;
-  });
+  // let workerWindow = new BrowserWindow();
+  // workerWindow.loadURL("file://" + __dirname + "/worker.html");
+  // // workerWindow.hide();
+  // workerWindow.webContents.openDevTools();
+  // workerWindow.on("closed", () => {
+  //   workerWindow = undefined;
+  // });
 };
 
 // This method will be called when Electron has finished
