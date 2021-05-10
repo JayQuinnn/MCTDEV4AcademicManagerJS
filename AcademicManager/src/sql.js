@@ -248,6 +248,21 @@ function removeAlma(almaID) {
         console.log('deleted ' + results.affectedRows + ' rows');
     })
 }
+function removeLecturer(lecturerID) {
+    let responce = confirm("Are you sure you want to delete this lecturer?");
+    if (responce == true) {
+        console.log(`Removing Lecturer with ID: ${lecturerID}`);
+        connection.query(`DELETE FROM tbllecturer WHERE fldlecturerID = ${lecturerID}`, function (error, results, fields) {
+        if (error) throw error;
+        console.log('deleted ' + results.affectedRows + ' rows');
+    })
+    } else {
+      
+    }
+    renderAllLecturers()
+    
+    
+}
 
 /**UPDATE STUDENT */
 function updateStudent(studentid, student) {

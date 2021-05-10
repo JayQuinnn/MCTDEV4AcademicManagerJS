@@ -9,7 +9,7 @@ function renderAllLecturers() {
                 <div class="col-2"><b>Employment Status</b></div>
                 <div class="col-2"><b>Email</b></div>
                 <div class="col-2"><b>Phone Number</b></div>
-                <div class="col-2"><b>Paygrade</b></div>
+                <div class="col-1"><b>Paygrade</b></div>
                 </div>`;
     connection.query(`SELECT * FROM tbllecturer`, function (error, results, field) {
         console.log(results);
@@ -21,12 +21,14 @@ function renderAllLecturers() {
                 <div class="col-2">${element.fldEmploymentStatus}</div>
                 <div class="col-2">${element.fldEmail}</div>
                 <div class="col-2">${element.fldPhoneNumber}</div>
-                <div class="col-2">${element.fldPaygrade}</div>
+                <div class="col-1">${element.fldPaygrade}</div>
 
                 <div style="float: right;"><button type="button" onclick="renderDetailedView
                 ('${element.fldName}','${element.fldLastName}','${element.fldEmploymentStatus}',
                 '${element.fldEmail}','${element.fldPhoneNumber}','${element.fldPaygrade}')"  
                 class="btn btn-info">Info</button></div>
+                <div style="float: right;"><button type="button" onclick="removeLecturer(${element.fldlecturerID})"  
+                class="btn btn-warning">REMOVE</button></div>
             </div>`;
             allAlma.innerHTML = htmlString;
         });
