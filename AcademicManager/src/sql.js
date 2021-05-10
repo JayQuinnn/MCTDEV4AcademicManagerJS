@@ -198,11 +198,17 @@ function removeStudent(studentID) {
 }
 
 function removeExchange(studentID) {
+    let responce = confirm("Are you sure you want to delete this lecturer?");
+    if (responce == true) {
     console.log(`Removing ExchangeStudent with ID: ${studentID}`);
     connection.query(`DELETE FROM tblstudentexchange WHERE fldStudentExchangeID = ${studentID}`, function (error, results, fields) {
         if (error) throw error;
         console.log('deleted ' + results.affectedRows + ' rows');
     })
+    } else {
+      
+    }
+    renderAllExchangeStudents()
 }
 
 function removeAlma(almaID) {

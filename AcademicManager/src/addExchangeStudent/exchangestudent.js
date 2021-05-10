@@ -8,7 +8,7 @@ function renderAllExchangeStudents() {
         <div class="col-1">Surname</div>
         <div class="col-1">Course</div>
         <div class="col-1">Gender</div>
-        <div class="col-2">Email</div>
+        <div class="col-1">Email</div>
         <div class="col-1">Disabilities</div>
         <div class="col-1">Phone Number</div>
         <div class="col-1">Year</div>
@@ -25,13 +25,15 @@ function renderAllExchangeStudents() {
                 <div class="col-1">${element.fldLastName}</div>
                 <div class="col-1">${element.fldCourse}</div>
                 <div class="col-1">${element.fldGender}</div>
-                <div class="col-2">${element.fldEmail}</div>
+                <div class="col-1">${element.fldEmail}</div>
                 <div class="col-1">${element.fldDisabilities}</div>
                 <div class="col-1">${element.fldPhoneNumber}</div>
                 <div class="col-1">${element.fldYear}</div>
                 <div class="col-1">${element.fldGroup}</div>
                 <div class="col-1">${element.fldNationality}</div>
-                <div class="col"><button type="button" onclick="renderDetailedView('${element.fldName}','${element.fldLastName}','${element.fldCourse}','${element.fldGender}','${element.fldPicture}','${element.fldEmail}','${element.fldDisabilities}','${element.fldPhoneNumber}','${element.fldYear}','${element.fldGroup}','${element.fldNationality}','${element.fldMotivationalLetter}')"  class="btn btn-info">Info</button></div>
+                <div class=""><button type="button" onclick="renderDetailedView('${element.fldName}','${element.fldLastName}','${element.fldCourse}','${element.fldGender}','${element.fldPicture}','${element.fldEmail}','${element.fldDisabilities}','${element.fldPhoneNumber}','${element.fldYear}','${element.fldGroup}','${element.fldNationality}','${element.fldMotivationalLetter}')"  class="btn btn-info">Info</button></div>
+                <div style="float: right;"><button type="button" onclick="removeExchange(${element.fldstudentid})"  
+                class="btn btn-danger">REMOVE</button></div>
             </div>`;
             allAlma.innerHTML = htmlString;
         });
