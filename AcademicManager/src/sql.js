@@ -157,34 +157,7 @@ function getAllExchange() {
     })
 }
 
-function renderAllAlmas() {
-    let nav = document.getElementById('navigationbar');
-    nav.innerHTML = `<a href="../index.html"><p>Back</p></a>`
 
-    let allAlma = document.getElementById('allAlma');
-    let htmlString = `<div class="row d-flex justify-content-start border-bottom">
-                <div class="col-2">Name</div>
-                <div class="col-2">Address</div>
-                <div class="col-2">Notes</div>
-                <div class="col-3">Email</div>
-                <div class="col-2">Phone Number</div>
-                </div>`;
-    connection.query(`SELECT * FROM tblalma`, function (error, results, field) {
-        console.log(results);
-        results.forEach(element => {
-            htmlString = htmlString + `
-            <div class="row d-flex justify-content-start border-bottom">
-                <div class="col-2">${element.fldName}</div>
-                <div class="col-2">${element.fldAddress}</div>
-                <div class="col-2">${element.fldNotes}</div>
-                <div class="col-3">${element.fldEmail}</div>
-                <div class="col-2">${element.fldPhoneNumber}</div>
-                <div style="float: right;"><button type="button" onclick="renderDetailedView('${element.fldName}','${element.fldAddress}','${element.fldNotes}','${element.fldEmail}','${element.fldPhoneNumber}')"  class="btn btn-info">Info</button></div>
-            </div>`;
-            allAlma.innerHTML = htmlString;
-        });
-    })
-}
 
 function renderAllStudents() {
     let nav = document.getElementById('navigationbar');
@@ -224,45 +197,7 @@ function renderAllStudents() {
         });
     })
 }
-function renderAllExchangeStudents() {
-    let nav = document.getElementById('navigationbar');
-    nav.innerHTML = `<a href="../index.html"><p>Back</p></a>`
 
-    let allAlma = document.getElementById('allStudent');
-    let htmlString = `<div class="row d-flex border-bottom">
-        <div class="col-1">Name</div>
-        <div class="col-1">Surname</div>
-        <div class="col-1">Course</div>
-        <div class="col-1">Gender</div>
-        <div class="col-2">Email</div>
-        <div class="col-1">Disabilities</div>
-        <div class="col-1">Phone Number</div>
-        <div class="col-1">Year</div>
-        <div class="col-1">Group</div>
-        <div class="col-1">Nationality</div>
-        <div class="col-1">Action</div>
-      </div>`;
-    connection.query(`SELECT * FROM tblstudentexchange`, function (error, results, field) {
-        console.log(results);
-        results.forEach(element => {
-            htmlString = htmlString + `
-            <div class="row d-flex justify-content-start border-bottom">
-                <div class="col-1">${element.fldName}</div>
-                <div class="col-1">${element.fldLastName}</div>
-                <div class="col-1">${element.fldCourse}</div>
-                <div class="col-1">${element.fldGender}</div>
-                <div class="col-2">${element.fldEmail}</div>
-                <div class="col-1">${element.fldDisabilities}</div>
-                <div class="col-1">${element.fldPhoneNumber}</div>
-                <div class="col-1">${element.fldYear}</div>
-                <div class="col-1">${element.fldGroup}</div>
-                <div class="col-1">${element.fldNationality}</div>
-                <div class="col"><button type="button" onclick="renderDetailedView('${element.fldName}','${element.fldLastName}','${element.fldCourse}','${element.fldGender}','${element.fldPicture}','${element.fldEmail}','${element.fldDisabilities}','${element.fldPhoneNumber}','${element.fldYear}','${element.fldGroup}','${element.fldNationality}','${element.fldMotivationalLetter}')"  class="btn btn-info">Info</button></div>
-            </div>`;
-            allAlma.innerHTML = htmlString;
-        });
-    })
-}
 
 
 

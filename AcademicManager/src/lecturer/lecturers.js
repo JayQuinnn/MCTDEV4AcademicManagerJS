@@ -4,12 +4,12 @@ function renderAllLecturers() {
 
     let allAlma = document.getElementById('allLecturers');
     let htmlString = `<div class="row d-flex justify-content-start border-bottom">
-                <div class="col-1">Name</div>
-                <div class="col-2">Last Name</div>
-                <div class="col-2">Employment Status</div>
-                <div class="col-2">Email</div>
-                <div class="col-2">Phone Number</div>
-                <div class="col-2">Paygrade</div>
+                <div class="col-1"><b>Name</b></div>
+                <div class="col-2"><b>Last Name</b></div>
+                <div class="col-2"><b>Employment Status</b></div>
+                <div class="col-2"><b>Email</b></div>
+                <div class="col-2"><b>Phone Number</b></div>
+                <div class="col-2"><b>Paygrade</b></div>
                 </div>`;
     connection.query(`SELECT * FROM tbllecturer`, function (error, results, field) {
         console.log(results);
