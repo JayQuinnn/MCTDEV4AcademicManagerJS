@@ -28,37 +28,33 @@ function printPDF(pdfBody, fldName, fldLastName){
     })
 }
 
-function experimentalSort(source){
-    console.log("doing experimentalSort")
-        for (let i = 1; i < source.length - 1; i++) {
-            for (let j = 1; j < source.length - 1 - i; j++) {
-                let sum = 0;
-                for (let k = 1; k < source.length; k++) {
-                    sum += source[k][j]
-                }
-                let sum1 = 0;
-                for (let k = 1; k < source.length; k++) {
-                    sum1 += source[k][j + 1]
-                }
-                if (sum < sum1) {
-                    for (let k = 1; k < source.length; k++) {
-                        let t;
-                        t = source[k][j];
-                        source[k][j] = source[k][j + 1];
-                        source[k][j + 1] = t;
-                    }
-                }
+function ExpirementbubbleSort(a, fCompare) {
+    if( a.length < 2)
+        return a;
+    for( var length = a.length-1; length; --length) {
+        var noSwaps = true;
+        var temp;
+        for( i=0; i<length; ++i) {
+            if( fCompare( a[i], a[i+1]) > 0) {
+                temp = a[i+1];
+                a[i+1] = a[i];
+                a[i] = temp;
+                noSwaps = false;
             }
         }
-    return source;
+        if( noSwaps)
+            break;
+    }
 }
 
-function sortFunction(a, b) {
-    console.log("running sortFunction")
-    if (a[1] === b[1]) {
-        return 0;
+function sortByColumn(a, colIndex){
+    function sortFunctionq(a, b) {
+        if (a[colIndex] === b[colIndex]) {
+            return 0;
+        }
+        else {
+            return (a[colIndex] > b[colIndex]) ? -1 : 1;
+        }
     }
-    else {
-        return (a[1] < b[1]) ? -1 : 1;
-    }
+    return ExpirementbubbleSort(a, sortFunctionq);
 }

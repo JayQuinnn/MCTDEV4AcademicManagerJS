@@ -13,7 +13,7 @@ function renderAllAlmas() {
                 </div>`;
     connection.query(`SELECT * FROM tblalma`, function (error, results, field) {
         console.log(results);
-        results = results.sort(sortFunction);
+        // results = bubbleSort(results);
         results.forEach(element => {
             htmlString = htmlString + `
             <div class="row d-flex justify-content-start border-bottom">
