@@ -13,7 +13,7 @@ function renderAllAlmas() {
                 </div>`;
     connection.query(`SELECT * FROM tblalma`, function (error, results, field) {
         console.log(results);
-        results = experimentalSort(results);
+        results = results.sort(sortFunction);
         results.forEach(element => {
             htmlString = htmlString + `
             <div class="row d-flex justify-content-start border-bottom">
@@ -23,7 +23,7 @@ function renderAllAlmas() {
                 <div class="col-3">${element.fldEmail}</div>
                 <div class="col-2">${element.fldPhoneNumber}</div>
                 <div class="col-2" style="float: right;"><button type="button" onclick="renderDetailedView('${element.fldName}','${element.fldAddress}','${element.fldNotes}','${element.fldEmail}','${element.fldPhoneNumber}')"  class="btn btn-info">Info</button>
-                <button type="button" onclick="removeStudent(${element.fldalmaid})"  
+                <button type="button" onclick="removeAlma(${element.fldAlmaID})"  
                 class="btn btn-danger">REMOVE</button>
                 </div>
                 </div>`;

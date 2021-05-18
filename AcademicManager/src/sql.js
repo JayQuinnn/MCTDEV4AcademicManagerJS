@@ -212,11 +212,17 @@ function removeExchange(studentID) {
 }
 
 function removeAlma(almaID) {
+    let responce = confirm("Are you sure you want to delete this Exchange Student?");
+    if (responce == true) {
     console.log(`Removing student with ID: ${almaID}`);
     connection.query(`DELETE FROM tblAlma WHERE fldAlmaID = ${almaID}`, function (error, results, fields) {
         if (error) throw error;
         console.log('deleted ' + results.affectedRows + ' rows');
     })
+    } else {
+      
+    }
+    renderAllAlmas()
 }
 function removeLecturer(lecturerID) {
     let responce = confirm("Are you sure you want to delete this lecturer?");
