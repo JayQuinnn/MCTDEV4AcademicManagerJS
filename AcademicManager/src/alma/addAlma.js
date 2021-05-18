@@ -2,10 +2,10 @@ document.getElementById('FormButton').addEventListener("click",(Event)=>{
     Event.preventDefault()
     createAlma()
 });
-document.getElementById('Secondary').addEventListener("click",(Event)=>{
-    Event.preventDefault()
-    addAlma(DefaultAlma)
-});
+// document.getElementById('Secondary').addEventListener("click",(Event)=>{
+//     Event.preventDefault()
+//     addAlma(DefaultAlma)
+// });
 connection.connect();
 const DefaultAlma = {
     Name: "Een Test Alma",
