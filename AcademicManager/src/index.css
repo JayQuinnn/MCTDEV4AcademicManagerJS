@@ -5,6 +5,7 @@ body {
 }
 main{
   padding: 1rem;
+  width: 100vw;
 }
 .row:hover{
   color: rgb(25, 154, 206);
