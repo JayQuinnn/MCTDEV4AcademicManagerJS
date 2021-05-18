@@ -183,7 +183,7 @@ function renderAlmaOptions() {
 
 /** REMOVE*/
 function removeStudent(studentID) {
-    let responce = confirm("Are you sure you want to delete this lecturer?");
+    let responce = confirm("Are you sure you want to delete this student?");
     if (responce == true) {
         console.log(`Removing student with ID: ${studentID}`);
         connection.query(`DELETE FROM tblStudent WHERE fldstudentid = ${studentID}`, function (error, results, fields) {
@@ -198,7 +198,7 @@ function removeStudent(studentID) {
 }
 
 function removeExchange(studentID) {
-    let responce = confirm("Are you sure you want to delete this lecturer?");
+    let responce = confirm("Are you sure you want to delete this Exchange Student?");
     if (responce == true) {
     console.log(`Removing ExchangeStudent with ID: ${studentID}`);
     connection.query(`DELETE FROM tblstudentexchange WHERE fldStudentExchangeID = ${studentID}`, function (error, results, fields) {

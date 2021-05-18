@@ -4,24 +4,28 @@ function renderAllAlmas() {
 
     let allAlma = document.getElementById('allAlma');
     let htmlString = `<div class="row d-flex justify-content-start border-bottom">
-                <div class="col-2"><b>Name</b></div>
+                <div class="col-1"><b>Name</b></div>
                 <div class="col-2"><b>Address</b></div>
                 <div class="col-2"><b>Notes</b></div>
                 <div class="col-3"><b>Email</b></div>
                 <div class="col-2"><b>Phone Number</b></div>
+                <div class="col-2"><b>Action</b></div>
                 </div>`;
     connection.query(`SELECT * FROM tblalma`, function (error, results, field) {
         console.log(results);
         results.forEach(element => {
             htmlString = htmlString + `
             <div class="row d-flex justify-content-start border-bottom">
-                <div class="col-2">${element.fldName}</div>
+                <div class="col-1">${element.fldName}</div>
                 <div class="col-2">${element.fldAddress}</div>
                 <div class="col-2">${element.fldNotes}</div>
                 <div class="col-3">${element.fldEmail}</div>
                 <div class="col-2">${element.fldPhoneNumber}</div>
-                <div style="float: right;"><button type="button" onclick="renderDetailedView('${element.fldName}','${element.fldAddress}','${element.fldNotes}','${element.fldEmail}','${element.fldPhoneNumber}')"  class="btn btn-info">Info</button></div>
-            </div>`;
+                <div class="col-2" style="float: right;"><button type="button" onclick="renderDetailedView('${element.fldName}','${element.fldAddress}','${element.fldNotes}','${element.fldEmail}','${element.fldPhoneNumber}')"  class="btn btn-info">Info</button>
+                <button type="button" onclick="removeStudent(${element.fldalmaid})"  
+                class="btn btn-danger">REMOVE</button>
+                </div>
+                </div>`;
             allAlma.innerHTML = htmlString;
         });
     })
