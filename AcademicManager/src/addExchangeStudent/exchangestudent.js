@@ -4,17 +4,17 @@ function renderAllExchangeStudents() {
 
     let allAlma = document.getElementById('allStudent');
     let htmlString = `<div class="row d-flex border-bottom">
-        <div class="col-1">Name</div>
-        <div class="col-1">Surname</div>
-        <div class="col-1">Course</div>
-        <div class="col-1">Gender</div>
-        <div class="col-2">Email</div>
-        <div class="col-1">Disabilities</div>
-        <div class="col-1">Phone Number</div>
-        <div class="col-1">Year</div>
-        <div class="col-1">Group</div>
-        <div class="col-1">Nationality</div>
-        <div class="col-1">Action</div>
+        <div class="col-1"><b>Name</b></div>
+        <div class="col-1"><b>Surname</b></div>
+        <div class="col-1"><b>Course</b></div>
+        <div class="col-1"><b>Gender</b></div>
+        <div class="col-2"><b>Email</b></div>
+        <div class="col-1"><b>Disabilities</b></div>
+        <div class="col-1"><b>Phone Number</b></div>
+        <div class="col-1"><b>Year</b></div>
+        <div class="col-1"><b>Group</b></div>
+        <div class="col-1"><b>Nationality</b></div>
+        <div class="col-1"><b>Action</b></div>
       </div>`;
     connection.query(`SELECT * FROM tblstudentexchange`, function (error, results, field) {
         console.log(results);

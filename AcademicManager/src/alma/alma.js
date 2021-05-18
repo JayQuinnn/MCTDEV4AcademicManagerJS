@@ -4,11 +4,11 @@ function renderAllAlmas() {
 
     let allAlma = document.getElementById('allAlma');
     let htmlString = `<div class="row d-flex justify-content-start border-bottom">
-                <div class="col-2">Name</div>
-                <div class="col-2">Address</div>
-                <div class="col-2">Notes</div>
-                <div class="col-3">Email</div>
-                <div class="col-2">Phone Number</div>
+                <div class="col-2"><b>Name</b></div>
+                <div class="col-2"><b>Address</b></div>
+                <div class="col-2"><b>Notes</b></div>
+                <div class="col-3"><b>Email</b></div>
+                <div class="col-2"><b>Phone Number</b></div>
                 </div>`;
     connection.query(`SELECT * FROM tblalma`, function (error, results, field) {
         console.log(results);
