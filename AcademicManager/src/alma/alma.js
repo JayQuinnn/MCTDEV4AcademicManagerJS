@@ -13,7 +13,8 @@ function renderAllAlmas() { //SIDE EFFECT: UI TONEN AAN GEBRUIKER
                 </div>`;
     connection.query(`SELECT * FROM tblalma`, function (error, results, field) {
         console.log(results);
-        results = bubbleSortAscending(results, 'fldName');
+        sorts.setModus(bubbleSortAscending);
+        results = sorts.doSort(results)
         results.forEach(element => {
             htmlString = htmlString + `
             <div class="row d-flex justify-content-start border-bottom">

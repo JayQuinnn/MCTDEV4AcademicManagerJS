@@ -4,36 +4,52 @@ function swap(array, i,j){
     array[j] = tmp
     return array
 }
-function bubbleSortAscending(a, par){
-    let swapped;
-    do {
-        swapped = false;
-        for (let i = 0; i < a.length - 1; i++) {
-            if (a[i][par] > a[i + 1][par]) {
-                let temp = a[i];
-                a[i] = a[i + 1];
-                a[i + 1] = temp;
-                swapped = true;
-            }
-        }
-    } while (swapped);
-    return a;
+function Sorts(){
+    this.modus = "";
+    this.setModus = modus =>{
+        this.modus = modus;
+    }
+    this.doSort = unsorted =>{
+        return this.modus.bubbleSort(unsorted)
+    }
 }
-function bubbleSortDescending(a, par){
-    let swapped;
-    do {
-        swapped = false;
-        for (let i = 0; i < a.length - 1; i++) {
-            if (a[i][par] < a[i + 1][par]) {
-                let temp = a[i];
-                a[i] = a[i + 1];
-                a[i + 1] = temp;
-                swapped = true;
+function BubbleSortAscending(){
+    this.bubbleSort = (a) =>{
+        let swapped;
+        do {
+            swapped = false;
+            for (let i = 0; i < a.length - 1; i++) {
+                if (a[i]['fldName'] > a[i + 1]['fldName']) {
+                    let temp = a[i];
+                    a[i] = a[i + 1];
+                    a[i + 1] = temp;
+                    swapped = true;
+                }
             }
-        }
-    } while (swapped);
-    return a;
+        } while (swapped);
+        return a;
+    }
 }
+function BubbleSortDescending(){
+    this.bubbleSort = (a) =>{
+        let swapped;
+        do {
+            swapped = false;
+            for (let i = 0; i < a.length - 1; i++) {
+                if (a[i]['fldName'] < a[i + 1]['fldName']) {
+                    let temp = a[i];
+                    a[i] = a[i + 1];
+                    a[i + 1] = temp;
+                    swapped = true;
+                }
+            }
+        } while (swapped);
+        return a;
+    }
+}
+const bubbleSortDescending = new BubbleSortDescending()
+const bubbleSortAscending = new BubbleSortAscending()
+const sorts = new Sorts()
 
 function printPDF(pdfBody, fldName, fldLastName){
     console.log(pdfBody)
