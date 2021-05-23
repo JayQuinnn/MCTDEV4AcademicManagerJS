@@ -1,4 +1,4 @@
-function renderAllLecturers() {
+function renderAllLecturers() {//SIDE EFFECT: UI TONEN AAN GEBRUIKER
     let nav = document.getElementById('navigationbar');
     nav.innerHTML = `<a href="../index.html"><p>Back</p></a>`
 
@@ -34,7 +34,7 @@ function renderAllLecturers() {
         });
     })
 }
-
+//SIDE EFFECT: UI TONEN AAN GEBRUIKER
 function renderDetailedView(fldName, fldLastName, fldEmploymentStatus, fldEmail, fldPhoneNumber, fldPaygrade){
     let nav = document.getElementById('navigationbar');
     nav.innerHTML = `<button type="button" onclick="renderAllLecturers()"  class="btn btn-danger">close</button>`

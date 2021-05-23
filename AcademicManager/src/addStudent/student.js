@@ -1,4 +1,4 @@
-function renderAllStudents() {
+function renderAllStudents() {//SIDE EFFECT: UI TONEN AAN GEBRUIKER
     let nav = document.getElementById('navigationbar');
     nav.innerHTML = `<a href="../index.html"><p>Back</p></a>`
 
@@ -44,10 +44,7 @@ function renderAllStudents() {
 
 renderAllStudents();
 
-function doSomething(iets){
-    console.log(iets);
-}
-
+//SIDE EFFECT: UI TONEN AAN GEBRUIKER
 function renderDetailedView(fldName, fldLastName, fldCourse, fldGender, fldPicture, fldEmail, fldDisabilities, fldPhoneNumber, fldYear, fldGroup, fldAddress){
     let nav = document.getElementById('navigationbar');
     nav.innerHTML = `<button type="button" onclick="renderAllStudents()"  class="btn btn-danger">close</button>`

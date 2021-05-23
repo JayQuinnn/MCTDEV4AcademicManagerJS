@@ -30,8 +30,6 @@ function createStudent(){
         Group,
         Address
     }
-
-    console.log(Student);
     addStudent(Student);
 
 }

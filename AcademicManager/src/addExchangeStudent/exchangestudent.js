@@ -1,4 +1,4 @@
-function renderAllExchangeStudents() {
+function renderAllExchangeStudents() { //SIDE EFFECT: UI TONEN AAN GEBRUIKER
     let nav = document.getElementById('navigationbar');
     nav.innerHTML = `<a href="../index.html"><p>Back</p></a>`
 
@@ -41,7 +41,7 @@ function renderAllExchangeStudents() {
 }
 
 
-
+//SIDE EFFECT: UI TONEN AAN GEBRUIKER
 function renderDetailedView(fldName, fldLastName, fldCourse, fldGender, fldPicture, fldEmail, fldDisabilities, fldPhoneNumber, fldYear, fldGroup, fldNationality, fldLetter){
     let nav = document.getElementById('navigationbar');
     nav.innerHTML = `<button type="button" onclick="renderAllExchangeStudents()"  class="btn btn-danger">close</button>

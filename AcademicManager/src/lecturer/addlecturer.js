@@ -17,7 +17,6 @@ function createLecturer(){
         Email,
         PhoneNumber,
     }
-    console.log(Lecturer);
     addLecturer(Lecturer);
 
 }
