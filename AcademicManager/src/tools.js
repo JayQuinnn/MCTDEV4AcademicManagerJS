@@ -4,20 +4,20 @@ function swap(array, i,j){
     array[j] = tmp
     return array
 }
-function bubbleSort(unsorted) {
-    let isSorted = false;
-    let lastUnsorted = unsorted.length -1;
-    while(!isSorted){
-        for (let i = 0; i < lastUnsorted; i++) {
-            console.log(unsorted[i], unsorted[i+1]);
-            if (unsorted[i].fldName > unsorted[i+1].fldName) {
-                swap(unsorted, i, i+1)
-                isSorted = false;
+function bubbleSort(a, par){
+    let swapped;
+    do {
+        swapped = false;
+        for (let i = 0; i < a.length - 1; i++) {
+            if (a[i][par] > a[i + 1][par]) {
+                let temp = a[i];
+                a[i] = a[i + 1];
+                a[i + 1] = temp;
+                swapped = true;
             }
         }
-        lastUnsorted--;
-    }
-    return unsorted;
+    } while (swapped);
+    return a;
 }
 
 function printPDF(pdfBody, fldName, fldLastName){
