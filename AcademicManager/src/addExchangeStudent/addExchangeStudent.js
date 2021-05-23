@@ -3,9 +3,6 @@ document.getElementById('FormButton').addEventListener("click",(Event)=>{
     createStudent()
 });
 renderAlmaOptions()
-function devTest(){
-    
-}
 
 function createStudent(){
 
@@ -58,7 +55,6 @@ function createStudent(){
         Dorm: "1",
         Letter: LetterBody,
     }
-    console.log(Student);
     addExchangeStudent(Student)
 
 }

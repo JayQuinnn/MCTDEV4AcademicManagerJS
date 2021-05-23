@@ -90,25 +90,25 @@ function searchStudents(fld, value) {
 }
 
 /** ADD*/
-function addStudent(student) { //SIDE EFFECT: ADDINGA RECORD INTO A DATABASE
+function addStudent(student) { //SIDE EFFECT: ADDING A RECORD INTO A DATABASE
     console.log(`Adding ${student.Name} ${student.LastName}`)
     connection.query(`INSERT INTO tblstudent (fldName, fldLastName, fldCourse, fldGender, fldPicture, fldEmail, fldDisabilities, fldPhoneNumber, fldYear, fldGroup, fldAddress) 
     VALUES('${student.Name}','${student.LastName}','${student.Course}','${student.Sex}','${student.Picture}','${student.Email}','${student.Disabilities}','${student.PhoneNumber}','${student.Year}','${student.Group}','${student.Address}')`);
 
 }
 
-function addLecturer(lecturer) { //SIDE EFFECT: ADDINGA RECORD INTO A DATABASE
+function addLecturer(lecturer) { //SIDE EFFECT: ADDING A RECORD INTO A DATABASE
     console.log(`Adding ${lecturer.Name} ${lecturer.LastName}`)
     connection.query(`INSERT INTO tbllecturer(fldName,fldLastName,fldEmail, fldPhoneNumber, fldPaygrade, fldEmploymentStatus, fldKey) 
     VALUES ('${lecturer.Name}', '${lecturer.LastName}', '${lecturer.Email}', '${lecturer.PhoneNumber}', '${lecturer.Paygrade}', 'Is currently teaching', '${lecturer.Name + lecturer.LastName + lecturer.Email}')`)
 }
 
-function addExchangeStudent(exchangeStudent) { //SIDE EFFECT: ADDINGA RECORD INTO A DATABASE
+function addExchangeStudent(exchangeStudent) { //SIDE EFFECT: ADDING A RECORD INTO A DATABASE
     connection.query(`INSERT INTO tblstudentexchange(fldName, fldLastName, fldCourse, fldGender, fldPicture, fldEmail, fldDisabilities, fldPhoneNumber, fldYear, fldGroup, fldNationality, fldAlmaID, fldDormID, fldMotivationalLetter) 
     VALUES ('${exchangeStudent.Name}','${exchangeStudent.LastName}','${exchangeStudent.Course}','${exchangeStudent.Sex}','${exchangeStudent.Picture}','${exchangeStudent.Email}','${exchangeStudent.Disabilities}','${exchangeStudent.PhoneNumber}','${exchangeStudent.Year}','${exchangeStudent.Group}','${exchangeStudent.Nationality}','${exchangeStudent.AlmaID}','${exchangeStudent.Dorm}','${exchangeStudent.Letter}')`)
 }
 
-function addAlma(alma) { //SIDE EFFECT: ADDINGA RECORD INTO A DATABASE
+function addAlma(alma) { //SIDE EFFECT: ADDING A RECORD INTO A DATABASE
     connection.query(`INSERT INTO tblalma(fldName, fldAddress, fldNotes, fldEmail, fldPhoneNumber, fldKey) VALUES('${alma.Name}','${alma.Address}','${alma.Notes}','${alma.Email}','${alma.PhoneNumber}', '${alma.Name + alma.PhoneNumber}')`,
         function (error, results, fields) {
             if (error) {

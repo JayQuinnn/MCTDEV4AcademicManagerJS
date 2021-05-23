@@ -32,12 +32,6 @@ function renderAllAlmas() { //SIDE EFFECT: UI TONEN AAN GEBRUIKER
     })
 }
 
-
-renderAllAlmas();
-
-function doSomething(iets){
-    console.log(iets);
-}
 //SIDE EFFECT: UI TONEN AAN GEBRUIKER
 function renderDetailedView(fldName, fldAddress, fldNotes, fldEmail, fldPhoneNumber){ 
     let nav = document.getElementById('navigationbar');
@@ -53,3 +47,4 @@ function renderDetailedView(fldName, fldAddress, fldNotes, fldEmail, fldPhoneNum
     `;
     allAlma.innerHTML = htmlString;
 }
+renderAllAlmas();
