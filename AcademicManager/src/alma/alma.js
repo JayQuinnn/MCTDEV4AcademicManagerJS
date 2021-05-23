@@ -1,4 +1,4 @@
-function renderAllAlmas() {
+function renderAllAlmas() { //SIDE EFFECT: UI TONEN AAN GEBRUIKER
     let nav = document.getElementById('navigationbar');
     nav.innerHTML = `<a href="../index.html"><p>Back</p></a>`
 
@@ -13,7 +13,7 @@ function renderAllAlmas() {
                 </div>`;
     connection.query(`SELECT * FROM tblalma`, function (error, results, field) {
         console.log(results);
-        results = bubbleSort(results, 'fldName');
+        results = bubbleSortAscending(results, 'fldName');
         results.forEach(element => {
             htmlString = htmlString + `
             <div class="row d-flex justify-content-start border-bottom">
@@ -38,8 +38,8 @@ renderAllAlmas();
 function doSomething(iets){
     console.log(iets);
 }
-
-function renderDetailedView(fldName, fldAddress, fldNotes, fldEmail, fldPhoneNumber){
+//SIDE EFFECT: UI TONEN AAN GEBRUIKER
+function renderDetailedView(fldName, fldAddress, fldNotes, fldEmail, fldPhoneNumber){ 
     let nav = document.getElementById('navigationbar');
     nav.innerHTML = `<button type="button" onclick="renderAllAlmas()"  class="btn btn-danger">close</button>`
     let allAlma = document.getElementById('allAlma');

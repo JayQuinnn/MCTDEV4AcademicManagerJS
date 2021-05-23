@@ -4,12 +4,27 @@ function swap(array, i,j){
     array[j] = tmp
     return array
 }
-function bubbleSort(a, par){
+function bubbleSortAscending(a, par){
     let swapped;
     do {
         swapped = false;
         for (let i = 0; i < a.length - 1; i++) {
             if (a[i][par] > a[i + 1][par]) {
+                let temp = a[i];
+                a[i] = a[i + 1];
+                a[i + 1] = temp;
+                swapped = true;
+            }
+        }
+    } while (swapped);
+    return a;
+}
+function bubbleSortDescending(a, par){
+    let swapped;
+    do {
+        swapped = false;
+        for (let i = 0; i < a.length - 1; i++) {
+            if (a[i][par] < a[i + 1][par]) {
                 let temp = a[i];
                 a[i] = a[i + 1];
                 a[i + 1] = temp;
