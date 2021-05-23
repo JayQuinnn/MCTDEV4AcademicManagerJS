@@ -142,7 +142,7 @@ function renderAlmaOptions() { //SIDE EFFECT: UI TONEN AAN GEBRUIKER
 }
 
 /** REMOVE*/
-function removeStudent(studentID) {
+function removeStudent(studentID) { //SIDE EFFECT: REQUIRING USER INPUT
     let responce = confirm("Are you sure you want to delete this student?");
     if (responce == true) {
         console.log(`Removing student with ID: ${studentID}`);
@@ -157,7 +157,7 @@ function removeStudent(studentID) {
     renderAllStudents()
 }
 
-function removeExchange(studentID) {
+function removeExchange(studentID) { //SIDE EFFECT: REQUIRING USER INPUT
     let responce = confirm("Are you sure you want to delete this Exchange Student?");
     if (responce == true) {
     console.log(`Removing ExchangeStudent with ID: ${studentID}`);
@@ -171,7 +171,7 @@ function removeExchange(studentID) {
     renderAllExchangeStudents()
 }
 
-function removeAlma(almaID) {
+function removeAlma(almaID) { //SIDE EFFECT: REQUIRING USER INPUT
     let responce = confirm("Are you sure you want to delete this Exchange Student?");
     if (responce == true) {
     console.log(`Removing student with ID: ${almaID}`);
@@ -183,8 +183,8 @@ function removeAlma(almaID) {
       
     }
     renderAllAlmas()
-}
-function removeLecturer(lecturerID) {
+} 
+function removeLecturer(lecturerID) { //SIDE EFFECT: REQUIRING USER INPUT
     let responce = confirm("Are you sure you want to delete this lecturer?");
     if (responce == true) {
         console.log(`Removing Lecturer with ID: ${lecturerID}`);
