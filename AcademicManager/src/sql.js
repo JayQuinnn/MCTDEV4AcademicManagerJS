@@ -54,35 +54,10 @@ class exchangeStudent {
     }
 }
 
-
-let jochem = new student('Jochemmmm', 'Crab', 1, 'MALE', 'picture', 'jochem@jochem', 'Geen', '011111111111', '2', 'C', 'Leuven')
-let mitch = new student('Mitch', 'Van Hove', 1, 'MALE', 'picture2', 'jochem@jochem', 'Geen', '011456461111', '3', 'B', 'Dilbeek')
-
-let tom = new exchangeStudent('T0mmmm', 'Wouters', 'MALE', 'PictureTom', 'Tom@tom', 'Geen', '654654', '3', 'C', "Tokyo", "1", "1", "Letter_Tom")
-
 const setOutput = (rows) => {
     output = rows;
     console.log(output);
 }
-
-
-/**STUDENT TEMPLATES*/
-
-const DefaultStudent = {
-    Name: "Mitch",
-    LastName: "Test Object",
-    Course: "MCT",
-    Sex: "MALE",
-    Picture: "c://path/pictures/something/memes.jpg",
-    Email: "hetTestObject@telenet.be",
-    Disabilities: "Geen",
-    PhoneNumber: "0461010101",
-    Year: 1,
-    // Grades,
-    Group: "A",
-    Address: "Ergens"
-}
-
 
 /**SEARCH */
 function searchOn(tbl, fld, value) {
@@ -271,26 +246,3 @@ function updateExchange(studentid, student) {
     fldMotivationalLetter='${student.Letter}'  
     WHERE fldStudentExchangeID=${studentid}`);
 }
-
-
-
-//console.log("-------------------------------------------")
-//getAllStudents();
-//removeStudent(2);
-//updateStudent(1, jochem);
-//addStudent(mitch);
-//searchStudents("fldCourse","1");
-//searchOn("tblcourse","fldCourseName","MCT")
-//console.log(output)
-//addExchangeStudent(tom);
-//getAllExchange();
-//removeExchange(2);
-//updateExchange(3, tom);
-
-
-
-
-
-
-
-

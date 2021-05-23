@@ -9,7 +9,8 @@ function bubbleSort(unsorted) {
     let lastUnsorted = unsorted.length -1;
     while(!isSorted){
         for (let i = 0; i < lastUnsorted; i++) {
-            if (unsorted[i] > unsorted[i+1]) {
+            console.log(unsorted[i], unsorted[i+1]);
+            if (unsorted[i].fldName > unsorted[i+1].fldName) {
                 swap(unsorted, i, i+1)
                 isSorted = false;
             }
