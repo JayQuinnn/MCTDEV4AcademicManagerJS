@@ -32,7 +32,7 @@ function renderAllExchangeStudents() { //SIDE EFFECT: UI TONEN AAN GEBRUIKER
                 <div class="col-1">${element.fldGroup}</div>
                 <div class="col-1">${element.fldNationality}</div>
                 <div class="col-1"><button type="button" onclick="renderDetailedView('${element.fldName}','${element.fldLastName}','${element.fldCourse}','${element.fldGender}','${element.fldPicture}','${element.fldEmail}','${element.fldDisabilities}','${element.fldPhoneNumber}','${element.fldYear}','${element.fldGroup}','${element.fldNationality}','${element.fldMotivationalLetter}')"  class="btn btn-info">Info</button>
-                <button type="button" onclick="removeExchange(${element.fldstudentid})"  
+                <button type="button" onclick="removeExchange(${element.fldStudentExchangeID})"  
                 class="btn btn-danger">REMOVE</button></div>
             </div>`;
             allAlma.innerHTML = htmlString;
